@@ -16,11 +16,19 @@ public class Employee {
     private String employeeId;
     private int age;
     private String gender;
-    private Date startDate;
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+    private String startDate;
     private String level;
     private String teamInfo;
     private String posTitle;
-    private String phonenumber;
+    private String phoneNumber;
     private String emailId;
     private String photo;
 
@@ -56,13 +64,7 @@ public class Employee {
         this.gender = gender;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
+    
 
     public String getLevel() {
         return level;
@@ -88,12 +90,12 @@ public class Employee {
         this.posTitle = posTitle;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmailId() {
@@ -112,6 +114,9 @@ public class Employee {
         this.photo = photo;
     }
    
-    
+    @Override
+    public String toString(){
+        return name;
+    }
     
 }

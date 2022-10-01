@@ -11,14 +11,26 @@ import java.util.ArrayList;
  * @author AMEYA A
  */
 public class EmployeeDirectory {
-    public ArrayList<Employee> empList;
-    public EmployeeDirectory(){
-        empList = new ArrayList<>();
+    private ArrayList<Employee> empDir;
+
+    public ArrayList<Employee> getEmpDir() {
+        return empDir;
     }
-    public void addToList(Employee employee){
-        empList.add(employee);
-        System.out.println(empList.size());
-        
-        
+
+    public void setEmpDir(ArrayList<Employee> empDir) {
+        this.empDir = empDir;
+    }
+    
+    public EmployeeDirectory(){
+        empDir = new ArrayList<>();
+    }
+    public Employee addToEmpDir(){
+        Employee newEmp = new Employee();
+        empDir.add(newEmp);
+        return newEmp;
+    }
+
+    public void deleteFromDir(Employee emp) {
+        empDir.remove(emp);
     }
 }
