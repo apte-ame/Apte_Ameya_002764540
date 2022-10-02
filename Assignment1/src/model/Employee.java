@@ -6,6 +6,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.Icon;
 
 /**
  *
@@ -30,7 +31,7 @@ public class Employee {
     private String posTitle;
     private String phoneNumber;
     private String emailId;
-    private String photo;
+    private Icon photo;
 
     public String getName() {
         return name;
@@ -106,11 +107,11 @@ public class Employee {
         this.emailId = emailId;
     }
 
-    public String getPhoto() {
+    public Icon getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(Icon photo) {
         this.photo = photo;
     }
    
