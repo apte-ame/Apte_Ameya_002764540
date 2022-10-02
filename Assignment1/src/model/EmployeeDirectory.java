@@ -33,4 +33,33 @@ public class EmployeeDirectory {
     public void deleteFromDir(Employee emp) {
         empDir.remove(emp);
     }
+    
+    public ArrayList<Employee> searchByField(String fieldFlag, String field){
+        ArrayList<Employee> empDirTemp = new ArrayList<>();
+        
+        switch(fieldFlag){
+            case "NAME":
+                for(Employee emp:empDir){
+                   if(emp.getName().equals(field)){ // this if is to safegaurd that it checks only that particular field
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+            case "EMP_ID":
+                for(Employee emp:empDir){
+                   if(emp.getEmployeeId().equals(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+            case "AGE":
+                for(Employee emp:empDir){
+                   if(emp.getAge() == Integer.parseInt(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+        }
+        return empDirTemp;
+    }
 }

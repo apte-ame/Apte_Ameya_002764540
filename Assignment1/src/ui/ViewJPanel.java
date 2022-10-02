@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Employee;
@@ -261,13 +262,14 @@ public class ViewJPanel extends javax.swing.JPanel {
                             .addComponent(labelGender)
                             .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelContactInfo)
-                    .addComponent(labelCellNumber)
-                    .addComponent(txtCellPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelEmailAddress)
-                        .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelContactInfo)
+                        .addComponent(labelCellNumber)
+                        .addComponent(txtCellPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(171, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -302,31 +304,40 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        Employee emp = empDir.addToEmpDir();
-
-        emp.setName(txtName.getText());
-        emp.setEmployeeId(txtEmpId.getText());
-        emp.setAge(Integer.valueOf(txtAge.getText()));
-        emp.setGender(txtGender.getText());
-        emp.setStartDate(txtStartDate.getText());
-        emp.setLevel(txtLevel.getText());
-        emp.setTeamInfo(txtTeamInfo.getText());
-        emp.setPosTitle(txtPosTitle.getText());
-        emp.setPhoneNumber(txtCellPhone.getText());
-        emp.setEmailId(txtEmailId.getText());
-
-        JOptionPane.showMessageDialog(this,"Employee Details saved successfully");
-
-        txtName.setText("");
-        txtEmpId.setText("");
-        txtAge.setText("");
-        txtGender.setText("");
-        txtStartDate.setText("");
-        txtLevel.setText("");
-        txtTeamInfo.setText("");
-        txtPosTitle.setText("");
-        txtCellPhone.setText("");
-        txtEmailId.setText("");
+        ArrayList<Employee> empDirTemp = new ArrayList<>();
+        String field = "";
+        String fieldFlag = "";
+        if(!txtName.getText().isEmpty()){
+            field = txtName.getText();
+            fieldFlag = "NAME";
+        }
+        else if(!txtEmpId.getText().isEmpty()){
+            field = txtEmpId.getText();
+            fieldFlag = "EMP_ID";
+        }
+        else if(!txtAge.getText().isEmpty()){
+            field = txtAge.getText();
+            fieldFlag = "AGE";
+        }
+        
+        empDirTemp = empDir.searchByField(fieldFlag,field);
+        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
+        model.setRowCount(0);
+        for(Employee emp: empDirTemp){
+            Object[] row = new Object[10];
+            row[0] = emp.getName();
+            row[1] = emp.getEmployeeId();
+            row[2] = emp.getAge();
+            row[3] = emp.getGender();
+            row[4] = emp.getStartDate();
+            row[5] = emp.getLevel();
+            row[6] = emp.getTeamInfo();
+            row[7] = emp.getPosTitle();
+            row[8] = emp.getPhoneNumber();
+            row[9] = emp.getEmailId();
+            model.addRow(row);
+        }
+        clearAllTextBoxes();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -390,4 +401,19 @@ public class ViewJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+    
+    private void clearAllTextBoxes(){
+        txtName.setText("");
+        txtEmpId.setText("");
+        txtAge.setText("");
+        txtGender.setText("");
+        txtStartDate.setText("");
+        txtLevel.setText("");
+        txtTeamInfo.setText("");
+        txtPosTitle.setText("");
+        txtCellPhone.setText("");
+        txtEmailId.setText("");
+    }
+    
+    
 }
