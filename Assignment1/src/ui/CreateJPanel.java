@@ -237,30 +237,60 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         Employee emp = empDir.addToEmpDir();
+        Boolean allPass = true;
+
+        if(txtCellPhone.getText().matches("\\d{10}")){
+            emp.setPhoneNumber(txtCellPhone.getText());
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Enter a valid 10 digit phone number");
+            allPass = false;
+        }
+        if(txtEmailId.getText().matches("^(.+)@(.+)$")){
+            emp.setEmailId(txtEmailId.getText());
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Enter a valid email id");
+            allPass = false;
+        }
+        if(txtStartDate.getText().matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$")){
+            emp.setStartDate(txtStartDate.getText());
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Enter a valid date in format dd/mm/yyyy");
+            allPass=false;
+        }
+        if(txtAge.getText().chars().allMatch( Character::isDigit )){
+            emp.setAge(txtAge.getText().isEmpty()?0:Integer.valueOf(txtAge.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Enter a valid age");
+            allPass=false;
+        }
+        if(allPass==true){
+            emp.setName(txtName.getText());
+            emp.setEmployeeId(txtEmpId.getText());
+            emp.setGender(txtGender.getText());
+            emp.setLevel(txtLevel.getText());
+            emp.setTeamInfo(txtTeamInfo.getText());
+            emp.setPosTitle(txtPosTitle.getText());
+            JOptionPane.showMessageDialog(this,"Employee Details saved successfully");
+            txtName.setText("");
+            txtEmpId.setText("");
+            txtAge.setText("");
+            txtGender.setText("");
+            txtStartDate.setText("");
+            txtLevel.setText("");
+            txtTeamInfo.setText("");
+            txtPosTitle.setText("");
+            txtCellPhone.setText("");
+            txtEmailId.setText("");
+        }
+        else{
+            empDir.deleteFromDir(emp);
+        }
         
-        emp.setName(txtName.getText());
-        emp.setEmployeeId(txtEmpId.getText());
-        emp.setAge(Integer.valueOf(txtAge.getText()));
-        emp.setGender(txtGender.getText());
-        emp.setStartDate(txtStartDate.getText());
-        emp.setLevel(txtLevel.getText());
-        emp.setTeamInfo(txtTeamInfo.getText());
-        emp.setPosTitle(txtPosTitle.getText());
-        emp.setPhoneNumber(txtCellPhone.getText());
-        emp.setEmailId(txtEmailId.getText());
-        
-        JOptionPane.showMessageDialog(this,"Employee Details saved successfully");
-        
-        txtName.setText("");
-        txtEmpId.setText("");
-        txtAge.setText("");
-        txtGender.setText("");
-        txtStartDate.setText("");
-        txtLevel.setText("");
-        txtTeamInfo.setText("");
-        txtPosTitle.setText("");
-        txtCellPhone.setText("");
-        txtEmailId.setText("");
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void txtTeamInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTeamInfoActionPerformed

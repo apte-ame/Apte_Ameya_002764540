@@ -316,7 +316,12 @@ public class ViewJPanel extends javax.swing.JPanel {
             fieldFlag = "EMP_ID";
         }
         else if(!txtAge.getText().isEmpty()){
-            field = txtAge.getText();
+            if(txtAge.getText().chars().allMatch( Character::isDigit )){
+                field = txtAge.getText();
+            }
+            else{
+                field = "0";
+            }
             fieldFlag = "AGE";
         }
         else if(!txtGender.getText().isEmpty()){
@@ -376,7 +381,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRowIndex = tblEmployee.getSelectedRow();
         if(selectedRowIndex < 0){
-            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
+            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
             return;
         }
         DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
@@ -403,72 +408,103 @@ public class ViewJPanel extends javax.swing.JPanel {
         }
         DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
         Employee emp = (Employee)model.getValueAt(selectedRowIndex, 0);
-        empDir.deleteFromDir(emp);
+
         Employee empUpdated = empDir.addToEmpDir();
-        
-        if(txtName.getText().isEmpty()){
-            empUpdated.setName(emp.getName());   
-        }else{
-            empUpdated.setName(txtName.getText());
+
+        Boolean allPass = true;
+        if(txtCellPhone.getText().isEmpty()){
+            empUpdated.setPhoneNumber(emp.getPhoneNumber());}
+        else if(txtCellPhone.getText().matches("\\d{10}")){           
+
+            empUpdated.setPhoneNumber(txtCellPhone.getText());
+        }       
+        else{
+            JOptionPane.showMessageDialog(this,"Enter a valid 10 digit phone number");
+            allPass = false;
         }
+            
         
-        if(txtEmpId.getText().isEmpty()){
-            empUpdated.setEmployeeId(emp.getEmployeeId());   
-        }else{
-            empUpdated.setEmployeeId(txtEmpId.getText());
+        if(txtEmailId.getText().isEmpty()){
+            empUpdated.setEmailId(emp.getEmailId());   
         }
-        
-        if(txtAge.getText().isEmpty()){
-            empUpdated.setAge((emp.getAge()));   
+        else if(txtEmailId.getText().matches("^(.+)@(.+)$")){
+            empUpdated.setEmailId(txtEmailId.getText());
         }else{
-            empUpdated.setAge(Integer.parseInt(txtAge.getText()));
-        }
-        
-        if(txtGender.getText().isEmpty()){
-            empUpdated.setGender(emp.getGender());   
-        }else{
-            empUpdated.setGender(txtGender.getText());
+            JOptionPane.showMessageDialog(this,"Enter a valid email id");
+            allPass = false;
         }
         
         if(txtStartDate.getText().isEmpty()){
             empUpdated.setStartDate(emp.getStartDate());   
-        }else{
+            }
+        else if(txtStartDate.getText().matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$")){
             empUpdated.setStartDate(txtStartDate.getText());
-        }
-        
-        if(txtLevel.getText().isEmpty()){
-            empUpdated.setLevel(emp.getLevel());   
         }else{
-            empUpdated.setLevel(txtLevel.getText());
+            JOptionPane.showMessageDialog(this,"Enter a valid date in format dd/mm/yyyy");
+            allPass=false;   
         }
+            
         
-        if(txtTeamInfo.getText().isEmpty()){
-            empUpdated.setTeamInfo(emp.getTeamInfo());   
+        if(txtAge.getText().isEmpty()){
+            empUpdated.setAge((emp.getAge()));   
+            }
+        else if(txtAge.getText().chars().allMatch( Character::isDigit )){
+            empUpdated.setAge(Integer.parseInt(txtAge.getText()));
         }else{
-            empUpdated.setTeamInfo(txtTeamInfo.getText());
+            JOptionPane.showMessageDialog(this,"Enter a valid age");
+            allPass=false;   
         }
-        
-        if(txtPosTitle.getText().isEmpty()){
-            empUpdated.setPosTitle(emp.getPosTitle());   
-        }else{
-            empUpdated.setPosTitle(txtPosTitle.getText());
-        }
-        
-        if(txtCellPhone.getText().isEmpty()){
-            empUpdated.setPhoneNumber(emp.getPhoneNumber());   
-        }else{
-            empUpdated.setPhoneNumber(txtCellPhone.getText());
-        }
-        
-        if(txtEmailId.getText().isEmpty()){
-            empUpdated.setEmailId(emp.getEmailId());   
-        }else{
-            empUpdated.setEmailId(txtEmailId.getText());
-        }
+            
+       
+        if(allPass==true){
 
-        JOptionPane.showMessageDialog(this, "Employee Details updated successfully");
-        clearAllTextBoxes();
-        populateData();
+            if(txtName.getText().isEmpty()){
+                empUpdated.setName(emp.getName());   
+            }else{
+                empUpdated.setName(txtName.getText());
+            }
+
+            if(txtEmpId.getText().isEmpty()){
+                empUpdated.setEmployeeId(emp.getEmployeeId());   
+            }else{
+                empUpdated.setEmployeeId(txtEmpId.getText());
+            }
+            
+            if(txtGender.getText().isEmpty()){
+                empUpdated.setGender(emp.getGender());   
+            }else{
+                empUpdated.setGender(txtGender.getText());
+            }
+            
+            if(txtLevel.getText().isEmpty()){
+                empUpdated.setLevel(emp.getLevel());   
+            }else{
+                empUpdated.setLevel(txtLevel.getText());
+            }
+
+            if(txtTeamInfo.getText().isEmpty()){
+                empUpdated.setTeamInfo(emp.getTeamInfo());   
+            }else{
+                empUpdated.setTeamInfo(txtTeamInfo.getText());
+            }
+
+            if(txtPosTitle.getText().isEmpty()){
+                empUpdated.setPosTitle(emp.getPosTitle());   
+            }else{
+                empUpdated.setPosTitle(txtPosTitle.getText());
+            }
+            empDir.deleteFromDir(emp);
+            JOptionPane.showMessageDialog(this, "Employee Details updated successfully");
+            clearAllTextBoxes();
+            populateData();
+            
+        }
+        else{
+            empDir.deleteFromDir(empUpdated);
+        }
+        
+        
+
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 
