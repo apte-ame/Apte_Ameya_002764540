@@ -59,6 +59,55 @@ public class EmployeeDirectory {
                    }
                 }
                 break;
+            case "GENDER":
+                for(Employee emp:empDir){
+                   if(emp.getGender().equals(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+            case "START_DATE":
+                for(Employee emp:empDir){
+                   if(emp.getStartDate().equals(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+            case "LEVEL":
+                for(Employee emp:empDir){
+                   if(emp.getLevel().equals(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+            case "TEAM_INFO":
+                for(Employee emp:empDir){
+                   if(emp.getTeamInfo().equals(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+            case "POS_TITLE":
+                for(Employee emp:empDir){
+                   if(emp.getPosTitle().equals(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+            case "PHONE_NUMBER":
+                for(Employee emp:empDir){
+                   if(emp.getPhoneNumber().equals(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
+            case "EMAIL_ID":
+                for(Employee emp:empDir){
+                   if(emp.getEmailId().equals(field)){ 
+                       empDirTemp.add(emp);
+                   }
+                }
+                break;
         }
         return empDirTemp;
     }

@@ -319,6 +319,34 @@ public class ViewJPanel extends javax.swing.JPanel {
             field = txtAge.getText();
             fieldFlag = "AGE";
         }
+        else if(!txtGender.getText().isEmpty()){
+            field = txtGender.getText();
+            fieldFlag = "GENDER";
+        }
+        else if(!txtStartDate.getText().isEmpty()){
+            field = txtStartDate.getText();
+            fieldFlag = "START_DATE";
+        }
+        else if(!txtLevel.getText().isEmpty()){
+            field = txtLevel.getText();
+            fieldFlag = "LEVEL";
+        }
+        else if(!txtTeamInfo.getText().isEmpty()){
+            field = txtTeamInfo.getText();
+            fieldFlag = "TEAM_INFO";
+        }
+        else if(!txtPosTitle.getText().isEmpty()){
+            field = txtPosTitle.getText();
+            fieldFlag = "POS_TITLE";
+        }
+        else if(!txtCellPhone.getText().isEmpty()){
+            field = txtCellPhone.getText();
+            fieldFlag = "PHONE_NUMBER";
+        }
+        else if(!txtEmailId.getText().isEmpty()){
+            field = txtEmailId.getText();
+            fieldFlag = "EMAIL_ID";
+        }
         
         empDirTemp = empDir.searchByField(fieldFlag,field);
         DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
