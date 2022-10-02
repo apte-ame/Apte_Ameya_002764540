@@ -281,7 +281,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a row to be deleted");
             return;
         }
-        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();;
+        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
         Employee emp = (Employee)model.getValueAt(selectedRowIndex, 0);
         empDir.deleteFromDir(emp);
         JOptionPane.showMessageDialog(this, "Employee Details deleted successfully");
@@ -353,7 +353,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(Employee emp: empDirTemp){
             Object[] row = new Object[10];
-            row[0] = emp.getName();
+            row[0] = emp;
             row[1] = emp.getEmployeeId();
             row[2] = emp.getAge();
             row[3] = emp.getGender();
@@ -374,10 +374,101 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblEmployee.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
+        Employee emp = (Employee)model.getValueAt(selectedRowIndex, 0);
+        txtName.setText(emp.getName());
+        txtEmpId.setText(emp.getEmployeeId());
+        txtAge.setText(String.valueOf(emp.getAge()));
+        txtGender.setText(emp.getGender());
+        txtStartDate.setText(emp.getStartDate());
+        txtLevel.setText(emp.getLevel());
+        txtTeamInfo.setText(emp.getTeamInfo());
+        txtPosTitle.setText(emp.getPosTitle());
+        txtCellPhone.setText(emp.getPhoneNumber());
+        txtEmailId.setText(emp.getEmailId());
+        
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblEmployee.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
+        Employee emp = (Employee)model.getValueAt(selectedRowIndex, 0);
+        empDir.deleteFromDir(emp);
+        Employee empUpdated = empDir.addToEmpDir();
+        
+        if(txtName.getText().isEmpty()){
+            empUpdated.setName(emp.getName());   
+        }else{
+            empUpdated.setName(txtName.getText());
+        }
+        
+        if(txtEmpId.getText().isEmpty()){
+            empUpdated.setEmployeeId(emp.getEmployeeId());   
+        }else{
+            empUpdated.setEmployeeId(txtEmpId.getText());
+        }
+        
+        if(txtAge.getText().isEmpty()){
+            empUpdated.setAge((emp.getAge()));   
+        }else{
+            empUpdated.setAge(Integer.parseInt(txtAge.getText()));
+        }
+        
+        if(txtGender.getText().isEmpty()){
+            empUpdated.setGender(emp.getGender());   
+        }else{
+            empUpdated.setGender(txtGender.getText());
+        }
+        
+        if(txtStartDate.getText().isEmpty()){
+            empUpdated.setStartDate(emp.getStartDate());   
+        }else{
+            empUpdated.setStartDate(txtStartDate.getText());
+        }
+        
+        if(txtLevel.getText().isEmpty()){
+            empUpdated.setLevel(emp.getLevel());   
+        }else{
+            empUpdated.setLevel(txtLevel.getText());
+        }
+        
+        if(txtTeamInfo.getText().isEmpty()){
+            empUpdated.setTeamInfo(emp.getTeamInfo());   
+        }else{
+            empUpdated.setTeamInfo(txtTeamInfo.getText());
+        }
+        
+        if(txtPosTitle.getText().isEmpty()){
+            empUpdated.setPosTitle(emp.getPosTitle());   
+        }else{
+            empUpdated.setPosTitle(txtPosTitle.getText());
+        }
+        
+        if(txtCellPhone.getText().isEmpty()){
+            empUpdated.setPhoneNumber(emp.getPhoneNumber());   
+        }else{
+            empUpdated.setPhoneNumber(txtCellPhone.getText());
+        }
+        
+        if(txtEmailId.getText().isEmpty()){
+            empUpdated.setEmailId(emp.getEmailId());   
+        }else{
+            empUpdated.setEmailId(txtEmailId.getText());
+        }
+
+        JOptionPane.showMessageDialog(this, "Employee Details updated successfully");
+        clearAllTextBoxes();
+        populateData();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 
