@@ -136,9 +136,9 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblStartDateNote.setText("(dd/mm/yyyy)");
+        lblStartDateNote.setText("(mm/dd/yyyy)");
 
-        lblGenderNote.setText("(Male/Female/Other)");
+        lblGenderNote.setText("(male/female/other)");
 
         btnPhoto.setText("Choose File");
         btnPhoto.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +204,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(192, 192, 192)
                         .addComponent(labelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +262,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(labelPhoto)
                     .addComponent(btnPhoto)
                     .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -282,7 +282,13 @@ public class CreateJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Employee emp = empDir.addToEmpDir();
         Boolean allPass = true;
-
+        if(txtName.getText().isEmpty()||txtEmpId.getText().isEmpty()||txtAge.getText().isEmpty()
+                ||txtGender.getText().isEmpty()||txtStartDate.getText().isEmpty()||txtLevel.getText().isEmpty()
+                ||txtTeamInfo.getText().isEmpty()||txtPosTitle.getText().isEmpty()||txtCellPhone.getText().isEmpty()
+                ||txtEmailId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"All fields are required");
+            empDir.deleteFromDir(emp);
+        }else{
         if(txtCellPhone.getText().matches("\\d{10}")){
             emp.setPhoneNumber(txtCellPhone.getText());
         }
@@ -297,15 +303,23 @@ public class CreateJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Enter a valid email id");
             allPass = false;
         }
-        if(txtStartDate.getText().matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$")){
-            emp.setStartDate(txtStartDate.getText());
+        //if(txtStartDate.getText().matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$")){
+        if(txtStartDate.getText().matches("^(?:(?:(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec))(\\/|-|\\.)31)\\1|(?:(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))(\\/|-|\\.)(?:29|30)\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:(?:0?2|(?:Feb))(\\/|-|\\.)(?:29)\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))(\\/|-|\\.)(?:0?[1-9]|1\\d|2[0-8])\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$$")){
+        emp.setStartDate(txtStartDate.getText());
         }
         else{
             JOptionPane.showMessageDialog(this,"Enter a valid date in format dd/mm/yyyy");
             allPass=false;
         }
         if(txtAge.getText().chars().allMatch( Character::isDigit )){
-            emp.setAge(txtAge.getText().isEmpty()?0:Integer.valueOf(txtAge.getText()));
+            if((15<Integer.valueOf(txtAge.getText())) && (Integer.valueOf(txtAge.getText())<101)){
+               emp.setAge(Integer.valueOf(txtAge.getText())); 
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Enter a valid age (Working age between 16 to 100)");
+                allPass=false;
+            }
+            
         }
         else{
             JOptionPane.showMessageDialog(this,"Enter a valid age");
@@ -317,6 +331,13 @@ public class CreateJPanel extends javax.swing.JPanel {
         else{
             JOptionPane.showMessageDialog(this,"Please select a photo");
             allPass=false;
+        }
+        if((txtGender.getText().equals("male"))||(txtGender.getText().equals("female"))||(txtGender.getText().equals("other"))){
+            emp.setGender(txtGender.getText());
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Enter a valid Gender from - (male/female/other)");
+            allPass = false;
         }
         if(allPass==true){
             emp.setName(txtName.getText());
@@ -341,7 +362,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         else{
             empDir.deleteFromDir(emp);
         }
-        
+    }
 
     }//GEN-LAST:event_btnCreateActionPerformed
 

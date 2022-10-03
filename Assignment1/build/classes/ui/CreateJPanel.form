@@ -85,7 +85,7 @@
                       <Component id="labelTitle" min="-2" pref="292" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="196" max="32767" attributes="0"/>
+              <EmptySpace pref="192" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -159,7 +159,7 @@
                   <Component id="btnPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblImage" alignment="3" min="-2" pref="117" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="109" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -279,12 +279,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblStartDateNote">
       <Properties>
-        <Property name="text" type="java.lang.String" value="(dd/mm/yyyy)"/>
+        <Property name="text" type="java.lang.String" value="(mm/dd/yyyy)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblGenderNote">
       <Properties>
-        <Property name="text" type="java.lang.String" value="(Male/Female/Other)"/>
+        <Property name="text" type="java.lang.String" value="(male/female/other)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnPhoto">

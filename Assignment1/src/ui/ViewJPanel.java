@@ -296,7 +296,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelEmailAddress)
                     .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -439,6 +439,13 @@ public class ViewJPanel extends javax.swing.JPanel {
         Employee empUpdated = empDir.addToEmpDir();
 
         Boolean allPass = true;
+        if(txtName.getText().isEmpty()&&txtEmpId.getText().isEmpty()&&txtAge.getText().isEmpty()
+                &&txtGender.getText().isEmpty()&&txtStartDate.getText().isEmpty()&&txtLevel.getText().isEmpty()
+                &&txtTeamInfo.getText().isEmpty()&&txtPosTitle.getText().isEmpty()&&txtCellPhone.getText().isEmpty()
+                &&txtEmailId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"All fields cannot be empty");
+            empDir.deleteFromDir(emp);
+        }else{
         if(txtCellPhone.getText().isEmpty()){
             empUpdated.setPhoneNumber(emp.getPhoneNumber());}
         else if(txtCellPhone.getText().matches("\\d{10}")){           
@@ -464,8 +471,9 @@ public class ViewJPanel extends javax.swing.JPanel {
         if(txtStartDate.getText().isEmpty()){
             empUpdated.setStartDate(emp.getStartDate());   
             }
-        else if(txtStartDate.getText().matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$")){
-            empUpdated.setStartDate(txtStartDate.getText());
+        //else if(txtStartDate.getText().matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$")){
+        else if(txtStartDate.getText().matches("^(?:(?:(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec))(\\/|-|\\.)31)\\1|(?:(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))(\\/|-|\\.)(?:29|30)\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:(?:0?2|(?:Feb))(\\/|-|\\.)(?:29)\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))(\\/|-|\\.)(?:0?[1-9]|1\\d|2[0-8])\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$$")){
+        empUpdated.setStartDate(txtStartDate.getText());
         }else{
             JOptionPane.showMessageDialog(this,"Enter a valid date in format dd/mm/yyyy");
             allPass=false;   
@@ -476,13 +484,27 @@ public class ViewJPanel extends javax.swing.JPanel {
             empUpdated.setAge((emp.getAge()));   
             }
         else if(txtAge.getText().chars().allMatch( Character::isDigit )){
-            empUpdated.setAge(Integer.parseInt(txtAge.getText()));
+            if((15<Integer.valueOf(txtAge.getText())) && (Integer.valueOf(txtAge.getText())<101)){
+               empUpdated.setAge(Integer.valueOf(txtAge.getText())); 
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Enter a valid age (Working age between 16 to 100)");
+                allPass=false;
+            }
         }else{
             JOptionPane.showMessageDialog(this,"Enter a valid age");
             allPass=false;   
         }
-        
-        
+        if(txtGender.getText().isEmpty()){
+                empUpdated.setGender(emp.getGender());   
+            }
+        else if((txtGender.getText().equals("male"))||(txtGender.getText().equals("female"))||(txtGender.getText().equals("other"))){
+            empUpdated.setGender(txtGender.getText());
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Enter a valid Gender from - (male/female/other)");
+            allPass = false;
+        }
        
         if(allPass==true){
 
@@ -496,12 +518,6 @@ public class ViewJPanel extends javax.swing.JPanel {
                 empUpdated.setEmployeeId(emp.getEmployeeId());   
             }else{
                 empUpdated.setEmployeeId(txtEmpId.getText());
-            }
-            
-            if(txtGender.getText().isEmpty()){
-                empUpdated.setGender(emp.getGender());   
-            }else{
-                empUpdated.setGender(txtGender.getText());
             }
             
             if(txtLevel.getText().isEmpty()){
@@ -538,7 +554,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             empDir.deleteFromDir(empUpdated);
         }
         
-        
+    }  
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
