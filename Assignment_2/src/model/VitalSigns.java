@@ -9,5 +9,6 @@ package model;
  * @author AMEYA A
  */
 public class VitalSigns {
-    
+    private int vitalSignsId;
+    private String vitalSign;
 }

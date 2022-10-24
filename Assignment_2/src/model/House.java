@@ -9,5 +9,6 @@ package model;
  * @author AMEYA A
  */
 public class House {
-    
+    private String houseId;
+    private String houseName;
 }

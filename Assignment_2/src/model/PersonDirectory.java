@@ -4,10 +4,12 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author AMEYA A
  */
 public class PersonDirectory {
-    
+    private ArrayList<Person> personDir;
 }

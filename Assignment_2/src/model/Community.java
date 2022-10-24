@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Community {
     private ArrayList<House> houseList;
-    private String name;
+    private String communityName;
     private Hospital hosp;
+    private String communityId;
 }

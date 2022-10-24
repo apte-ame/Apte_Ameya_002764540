@@ -8,6 +8,8 @@ package model;
  *
  * @author AMEYA A
  */
-public class Doctor {
-    
+public class Doctor extends Person{
+    private String doctorName;
+    private String doctorUserId;
+    private String doctorPassword;
 }

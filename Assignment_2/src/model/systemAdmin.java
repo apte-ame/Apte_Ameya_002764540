@@ -8,12 +8,8 @@ package model;
  *
  * @author AMEYA A
  */
-public class Person {
-    private String personName;
-    private String personUserId;
-    private int personAge;
-    private String personGender;
-    private String houseId;
-    private String personPassword;
-    private String bloodGroup;
+public class systemAdmin {
+    private String userId;
+    private String password;
+    private String name;
 }

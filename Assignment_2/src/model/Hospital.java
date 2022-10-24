@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author AMEYA A
  */
 public class Hospital {
-    private String name;
+    private String hospitalName;
+    private String hospitalId;
     
 }

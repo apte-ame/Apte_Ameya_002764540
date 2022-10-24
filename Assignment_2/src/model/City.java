@@ -13,5 +13,6 @@ import java.util.ArrayList;
 public class City {
     private HospitalDirectory hospList;
     private ArrayList<Community> commList;
-    private String name;
+    private String cityName;
+    private String cityId;
 }

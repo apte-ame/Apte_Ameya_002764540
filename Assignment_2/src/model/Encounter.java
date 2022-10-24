@@ -9,5 +9,6 @@ package model;
  * @author AMEYA A
  */
 public class Encounter {
-    
+    //add timestamp
+    private String encounterId;
 }
