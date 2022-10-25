@@ -112,6 +112,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnAdminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminLoginActionPerformed
         // TODO add your handling code here:
+        DashBoardJPanel dash = new DashBoardJPanel();
+        splitPane.setRightComponent(dash);
     }//GEN-LAST:event_btnAdminLoginActionPerformed
 
     /**
