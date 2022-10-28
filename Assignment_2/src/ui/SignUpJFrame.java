@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
 
@@ -8,12 +8,12 @@ package ui;
  *
  * @author AMEYA A
  */
-public class SignUpJPanel extends javax.swing.JPanel {
+public class SignUpJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form SignUpJPanel
+     * Creates new form SignUpJFrame
      */
-    public SignUpJPanel() {
+    public SignUpJFrame() {
         initComponents();
     }
 
@@ -26,33 +26,23 @@ public class SignUpJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblName = new javax.swing.JLabel();
-        lblAge = new javax.swing.JLabel();
-        lblGender = new javax.swing.JLabel();
-        lblHouseNo = new javax.swing.JLabel();
-        lblUserName = new javax.swing.JLabel();
-        lblBloodGrp = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
         txtGender = new javax.swing.JTextField();
         txtHouseNo = new javax.swing.JTextField();
+        lblName = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
+        lblAge = new javax.swing.JLabel();
         txtBloodGrp = new javax.swing.JTextField();
+        lblGender = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
+        lblHouseNo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lblUserName = new javax.swing.JLabel();
+        lblBloodGrp = new javax.swing.JLabel();
 
-        lblName.setText("Name");
-
-        lblAge.setText("Age");
-
-        lblGender.setText("Gender");
-
-        lblHouseNo.setText("House No.");
-
-        lblUserName.setText("User Name");
-
-        lblBloodGrp.setText("Blood Group");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblPassword.setText("Password");
 
@@ -62,10 +52,22 @@ public class SignUpJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblName.setText("Name");
+
+        lblAge.setText("Age");
+
+        lblGender.setText("Gender");
+
+        lblHouseNo.setText("House No.");
+
         jButton1.setText("Create Account");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        lblUserName.setText("User Name");
+
+        lblBloodGrp.setText("Blood Group");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -101,7 +103,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(119, 119, 119)
                 .addComponent(jButton1)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,14 +141,50 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SignUpJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SignUpJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SignUpJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SignUpJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SignUpJFrame().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
