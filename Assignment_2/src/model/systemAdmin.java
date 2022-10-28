@@ -9,7 +9,9 @@ package model;
  * @author AMEYA A
  */
 public class SystemAdmin {
+
     private String userId;
     private String password;
     private String name;
 }
+
