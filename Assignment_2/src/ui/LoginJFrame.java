@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
-
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import model.*;
 /**
  *
  * @author AMEYA A
@@ -79,8 +81,8 @@ public class LoginJFrame extends javax.swing.JFrame {
                             .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(144, 144, 144)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword)
-                            .addComponent(txtUserName)))
+                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(txtPassword)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(169, 169, 169)
                         .addComponent(btnSignUp)
@@ -113,12 +115,23 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
+
+       
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
-        new DashBoardJFrame().setVisible(true);
-        this.setVisible(false);
+        PersonDirectory pDir = new PersonDirectory();
+        ConfigureSystem cSys =  new ConfigureSystem();
+        ArrayList<Person> pList = cSys.getTemp();
+        Boolean check = pDir.verifyCred(pList,txtUserName.getText(), txtPassword.getText());
+        if(check.equals(true)){
+            new DashBoardJFrame().setVisible(true);
+            this.setVisible(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Incorrect Credentials");
+        }
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed

@@ -8,7 +8,7 @@ package model;
  *
  * @author AMEYA A
  */
-public class systemAdmin {
+public class SystemAdmin {
     private String userId;
     private String password;
     private String name;
