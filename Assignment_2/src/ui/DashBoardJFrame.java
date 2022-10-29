@@ -67,6 +67,41 @@ public class DashBoardJFrame extends javax.swing.JFrame {
         cmbBoxCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(communityNames));
         cmbBoxCity.setModel(new javax.swing.DefaultComboBoxModel<>(cityNames));
         cmbBoxHospital.setModel(new javax.swing.DefaultComboBoxModel<>(hospitalNames));
+        
+        DefaultTableModel model = (DefaultTableModel)tblDetails.getModel();
+        model.setRowCount(0);
+
+        
+
+        
+        for(Doctor d :cSys.getDoctorList()){
+            Object[] row = new Object[4];
+            for(Hospital h:cSys.getHospitalDirUpdate()){
+                if(h.getDoctor().getDoctorName().equals(d.getDoctorName())){
+
+                    row[0] = d.getDoctorName();
+                    row[1] = h.getHospitalName();
+                    for(City c:cSys.getCityList()){
+                        for(Hospital hos:c.getHospList()){
+                            if(hos.getHospitalName().equals(h.getHospitalName())){
+                                row[3] = c.getCityName();
+                            }
+                        }
+                    for(Community com: cSys.getCommunityMasterList()){
+                        for(Hospital hos:com.getHosp()){
+                            if(hos.getHospitalName().equals(h.getHospitalName())){
+                                row[2] = com.getCommunityName();
+                            }
+                        }
+                        }
+                    }
+                }
+                
+            }
+        model.addRow(row);
+ 
+        }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -281,19 +316,19 @@ public class DashBoardJFrame extends javax.swing.JFrame {
                 }
             }
         }
-//        String selectedDoctor = 
+
         DefaultTableModel model = (DefaultTableModel)tblDetails.getModel();
         model.setRowCount(0);
-//        for(Employee emp: empDirTemp){
-            Object[] row = new Object[4];
-            row[0] = doctor;
-            row[1] = selectedHospital;
-            row[2] = selectedCity;
-            row[3] = selectedCommunity;
-            
-            model.addRow(row);
+
+        Object[] row = new Object[4];
+        row[0] = doctor;
+        row[1] = selectedHospital;
+        row[2] = selectedCity;
+        row[3] = selectedCommunity;
+
+        model.addRow(row);
         
-//        clearAllTextBoxes();
+
     }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
