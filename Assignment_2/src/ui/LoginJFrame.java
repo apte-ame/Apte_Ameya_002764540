@@ -14,8 +14,15 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginJFrame
+     * 
      */
-    public LoginJFrame() {
+    ConfigureSystem cSysMain;
+    public LoginJFrame(ConfigureSystem cSysMain) {
+        initComponents();
+        this.cSysMain = cSysMain;
+    }
+    
+    public LoginJFrame(){
         initComponents();
     }
 
@@ -72,7 +79,7 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnLandingPage.setLabel("Landing Page");
+        btnLandingPage.setLabel("Home Page");
         btnLandingPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLandingPageActionPerformed(evt);
@@ -103,7 +110,7 @@ public class LoginJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(lblLogPage, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
@@ -141,11 +148,11 @@ public class LoginJFrame extends javax.swing.JFrame {
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
         PersonDirectory pDir = new PersonDirectory();
-        ConfigureSystem cSys =  new ConfigureSystem();
-        ArrayList<Person> pList = cSys.getP();
+//        ConfigureSystem cSys =  new ConfigureSystem();
+        ArrayList<Person> pList = cSysMain.getP();
         Boolean check = pDir.verifyCred(pList,txtUserName.getText(), new String(jPassField.getPassword()));
         if(check.equals(true)){
-            new DashBoardJFrame().setVisible(true);
+            new PatientAppointmentBooking(cSysMain).setVisible(true);
             this.setVisible(false);
         }
         else{
@@ -165,7 +172,7 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void btnLandingPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingPageActionPerformed
         // TODO add your handling code here:
-        new MainJFrame().setVisible(true);
+        new MainSelectionPage(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLandingPageActionPerformed
 

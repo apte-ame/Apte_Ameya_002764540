@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import model.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -11,57 +13,65 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author AMEYA A
  */
-public class DashBoardJFrame extends javax.swing.JFrame {
+public class PatientAppointmentBooking extends javax.swing.JFrame {
 
     /**
-     * Creates new form DashBoardJFrame
+     * Creates new form PatientAppointmentBooking
      */
-    public DashBoardJFrame() {
+    ConfigureSystem cSysMain;
+    public PatientAppointmentBooking(ConfigureSystem cSysMain) {
         initComponents();
-        myInitComponents();
+        this.cSysMain = cSysMain;
+        myInitComponents(this.cSysMain);
     }
-    private void myInitComponents(){
+    
+    public PatientAppointmentBooking() {
+        initComponents();
+        myInitComponents(cSysMain);
+    }
+    
+    private void myInitComponents(ConfigureSystem cSysMain){
         
-        ConfigureSystem cSys = new ConfigureSystem();
-        String[] cityNames = new String[cSys.getCityList().size()];
+//        ConfigureSystem cSys = new ConfigureSystem();
+        String[] cityNames = new String[cSysMain.getCityList().size()];
         int count = 0;
-        for(City city:cSys.getCityList()){
+        for(City city:cSysMain.getCityList()){
             cityNames[count] = city.getCityName();
             count = count + 1;
         }
 //        String[] cityNames = new String[3];
-//        cityNames[0] = cSys.getCy1().getCityName();
-//        cityNames[1] = cSys.getCy2().getCityName();
-//        cityNames[2] = cSys.getCy3().getCityName();
+//        cityNames[0] = cSysMain.getCy1().getCityName();
+//        cityNames[1] = cSysMain.getCy2().getCityName();
+//        cityNames[2] = cSysMain.getCy3().getCityName();
         
-        String[] communityNames = new String[cSys.getCommunityMasterList().size()];
+        String[] communityNames = new String[cSysMain.getCommunityMasterList().size()];
         int count1 = 0;
-        for(Community com:cSys.getCommunityMasterList()){
+        for(Community com:cSysMain.getCommunityMasterList()){
             communityNames[count1] = com.getCommunityName();
             count1 = count1 + 1;
         }
-//        communityNames[0] = cSys.getC1().getCommunityName();
-//        communityNames[1] = cSys.getC2().getCommunityName();
-//        communityNames[2] = cSys.getC3().getCommunityName();
-//        communityNames[3] = cSys.getC4().getCommunityName();
-//        communityNames[4] = cSys.getC5().getCommunityName();
+//        communityNames[0] = cSysMain.getC1().getCommunityName();
+//        communityNames[1] = cSysMain.getC2().getCommunityName();
+//        communityNames[2] = cSysMain.getC3().getCommunityName();
+//        communityNames[3] = cSysMain.getC4().getCommunityName();
+//        communityNames[4] = cSysMain.getC5().getCommunityName();
         
-        String[] hospitalNames = new String[cSys.getHospitalDirUpdate().size()];
+        String[] hospitalNames = new String[cSysMain.getHospitalDirUpdate().size()];
         int count2 = 0;
-        for(Hospital hp:cSys.getHospitalDirUpdate()){
+        for(Hospital hp:cSysMain.getHospitalDirUpdate()){
             hospitalNames[count2] = hp.getHospitalName();
             count2 = count2 + 1;
         }
-//        hospitalNames[0] = cSys.getHp1().getHospitalName();
-//        hospitalNames[1] = cSys.getHp2().getHospitalName();
-//        hospitalNames[2] = cSys.getHp3().getHospitalName();
-//        hospitalNames[3] = cSys.getHp4().getHospitalName();
-//        hospitalNames[4] = cSys.getHp5().getHospitalName();
-//        hospitalNames[5] = cSys.getHp6().getHospitalName();
-//        hospitalNames[6] = cSys.getHp7().getHospitalName();
-//        hospitalNames[7] = cSys.getHp8().getHospitalName();
-//        hospitalNames[8] = cSys.getHp9().getHospitalName();
-//        hospitalNames[9] = cSys.getHp10().getHospitalName();
+//        hospitalNames[0] = cSysMain.getHp1().getHospitalName();
+//        hospitalNames[1] = cSysMain.getHp2().getHospitalName();
+//        hospitalNames[2] = cSysMain.getHp3().getHospitalName();
+//        hospitalNames[3] = cSysMain.getHp4().getHospitalName();
+//        hospitalNames[4] = cSysMain.getHp5().getHospitalName();
+//        hospitalNames[5] = cSysMain.getHp6().getHospitalName();
+//        hospitalNames[6] = cSysMain.getHp7().getHospitalName();
+//        hospitalNames[7] = cSysMain.getHp8().getHospitalName();
+//        hospitalNames[8] = cSysMain.getHp9().getHospitalName();
+//        hospitalNames[9] = cSysMain.getHp10().getHospitalName();
         
         
         cmbBoxCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(communityNames));
@@ -71,36 +81,43 @@ public class DashBoardJFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)tblDetails.getModel();
         model.setRowCount(0);
 
-        
-
-        
-        for(Doctor d :cSys.getDoctorList()){
+        for(MasterDB myRow:cSysMain.getMasterList()){
             Object[] row = new Object[4];
-            for(Hospital h:cSys.getHospitalDirUpdate()){
-                if(h.getDoctor().getDoctorName().equals(d.getDoctorName())){
-
-                    row[0] = d.getDoctorName();
-                    row[1] = h.getHospitalName();
-                    for(City c:cSys.getCityList()){
-                        for(Hospital hos:c.getHospList()){
-                            if(hos.getHospitalName().equals(h.getHospitalName())){
-                                row[3] = c.getCityName();
-                            }
-                        }
-                    for(Community com: cSys.getCommunityMasterList()){
-                        for(Hospital hos:com.getHosp()){
-                            if(hos.getHospitalName().equals(h.getHospitalName())){
-                                row[2] = com.getCommunityName();
-                            }
-                        }
-                        }
-                    }
-                }
-                
-            }
-        model.addRow(row);
- 
+            row[0] = myRow.getD().getDoctorName();
+            row[1] = myRow.getH().getHospitalName();
+            row[2] = myRow.getC().getCityName();
+            row[3] = myRow.getCom().getCommunityName();
+            model.addRow(row);
         }
+
+        
+//        for(Doctor d :cSysMain.getDoctorList()){
+//            Object[] row = new Object[4];
+//            for(Hospital h:cSysMain.getHospitalDirUpdate()){
+//                if(h.getDoctor().getDoctorName().equals(d.getDoctorName())){
+//
+//                    row[0] = d.getDoctorName();
+//                    row[1] = h.getHospitalName();
+//                    for(City c:cSysMain.getCityList()){
+//                        for(Hospital hos:c.getHospList()){
+//                            if(hos.getHospitalName().equals(h.getHospitalName())){
+//                                row[2] = c.getCityName();
+//                            }
+//                        }
+//                    for(Community com: cSysMain.getCommunityMasterList()){
+//                        for(Hospital hos:com.getHosp()){
+//                            if(hos.getHospitalName().equals(h.getHospitalName())){
+//                                row[3] = com.getCommunityName();
+//                            }
+//                        }
+//                        }
+//                    }
+//                }
+//                
+//            }
+//        model.addRow(row);
+// 
+//        }
         
     }
     /**
@@ -123,11 +140,18 @@ public class DashBoardJFrame extends javax.swing.JFrame {
         cmbBoxCommunity = new javax.swing.JComboBox<>();
         cmbBoxHospital = new javax.swing.JComboBox<>();
         btnSearch = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnBookApp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tblDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -195,12 +219,28 @@ public class DashBoardJFrame extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Appointment date");
+
+        btnBookApp.setText("Schedule appointment");
+        btnBookApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookAppActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -217,39 +257,58 @@ public class DashBoardJFrame extends javax.swing.JFrame {
                             .addComponent(lblName1))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbBoxCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbBoxHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmbBoxCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(btnSearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(128, 128, 128))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmbBoxHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cmbBoxCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(214, 214, 214)
-                                .addComponent(btnSearch)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBookApp, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(101, 101, 101)))))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCity)
-                            .addComponent(cmbBoxCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCity)
+                                    .addComponent(cmbBoxCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSearch)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblBookAppmt)
+                                    .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)))
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCommunity)
-                            .addComponent(cmbBoxCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearch))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName1)
-                            .addComponent(cmbBoxHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBookAppmt)
-                            .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)))
+                            .addComponent(cmbBoxCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBookApp)
+                        .addGap(25, 25, 25)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName1)
+                    .addComponent(cmbBoxHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -259,9 +318,9 @@ public class DashBoardJFrame extends javax.swing.JFrame {
 
     private void cmbBoxCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxCityActionPerformed
         // TODO add your handling code here:
-        ConfigureSystem cSys = new ConfigureSystem();
+//        ConfigureSystem cSys = new ConfigureSystem();
                
-        for(City c:cSys.getCityList()){
+        for(City c:cSysMain.getCityList()){
             if(c.getCityName().equals(cmbBoxCity.getSelectedItem().toString())){
                 String[] commNames = new String[c.getCommList().size()];
                 String[] hospNames = new String[c.getHospList().size()];
@@ -302,18 +361,25 @@ public class DashBoardJFrame extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        ConfigureSystem cSys = new ConfigureSystem();
+//        ConfigureSystem cSys = new ConfigureSystem();
         String selectedCity = cmbBoxCity.getSelectedItem().toString();
         String selectedCommunity = cmbBoxCommunity.getSelectedItem().toString();
         String selectedHospital = cmbBoxHospital.getSelectedItem().toString();
-        String doctor = new String();
-        for(City c:cSys.getCityList()){
-            if(c.getCityName().equals(selectedCity)){
-                for(Hospital hosp:c.getHospList()){
-                    if(hosp.getHospitalName().equals(selectedHospital)){
-                        doctor = hosp.getDoctor().getDoctorName();
-                    }
-                }
+        String doctorName = new String();
+//        for(City c:cSysMain.getCityList()){
+//            if(c.getCityName().equals(selectedCity)){
+//                for(Hospital hosp:c.getHospList()){
+//                    if(hosp.getHospitalName().equals(selectedHospital)){
+//                        doctor = hosp.getDoctor().getDoctorName();
+//                    }
+//                }
+//            }
+//        }
+        for(MasterDB myRow:cSysMain.getMasterList()){
+            if((selectedCity.equals(myRow.getC().getCityName())) &&
+                selectedCommunity.equals(myRow.getCom().getCommunityName()) &&
+                selectedHospital.equals(myRow.getH().getHospitalName())){
+                doctorName = myRow.getD().getDoctorName();
             }
         }
 
@@ -321,7 +387,7 @@ public class DashBoardJFrame extends javax.swing.JFrame {
         model.setRowCount(0);
 
         Object[] row = new Object[4];
-        row[0] = doctor;
+        row[0] = doctorName;
         row[1] = selectedHospital;
         row[2] = selectedCity;
         row[3] = selectedCommunity;
@@ -330,6 +396,17 @@ public class DashBoardJFrame extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btnBookAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppActionPerformed
+        // TODO add your handling code here:
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+        LocalDateTime now = LocalDateTime.now(); 
+        System.out.println(now.toString());
+    }//GEN-LAST:event_btnBookAppActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,31 +425,37 @@ public class DashBoardJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashBoardJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientAppointmentBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashBoardJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientAppointmentBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashBoardJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientAppointmentBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashBoardJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientAppointmentBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashBoardJFrame().setVisible(true);
+                new PatientAppointmentBooking().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBookApp;
     private java.awt.Button btnLandingPage;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cmbBoxCity;
     private javax.swing.JComboBox<String> cmbBoxCommunity;
     private javax.swing.JComboBox<String> cmbBoxHospital;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblBookAppmt;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblCommunity;

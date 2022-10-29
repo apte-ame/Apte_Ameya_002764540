@@ -12,4 +12,18 @@ import java.util.ArrayList;
  */
 public class EncounterHistory {
     private ArrayList<Encounter> encounterHis;
+
+    public EncounterHistory(ArrayList<Encounter> encounterHis) {
+        this.encounterHis = encounterHis;
+    }
+
+    public ArrayList<Encounter> getEncounterHis() {
+        return encounterHis;
+    }
+
+    public void setEncounterHis(ArrayList<Encounter> encounterHis) {
+        this.encounterHis = encounterHis;
+    }
+    
+    
 }

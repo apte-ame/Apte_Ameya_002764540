@@ -16,13 +16,31 @@ public class ConfigureSystem {
     ArrayList<Person> p;
     House h1,h2,h3,h4,h5,h6,h7,h8,h9,h10;
     ArrayList<House> houseList1,houseList2,houseList3,houseList4,houseList5;
-    Hospital hp1,hp2,hp3,hp4,hp5,hp6,hp7,hp8,hp9,hp10;
-    ArrayList<Hospital> hospitalList1,hospitalList2,hospitalList3,hospitalList4,hospitalList5;
+    Hospital hp1,hp2,hp3,hp4;
+    ArrayList<Hospital> hospitalList1,hospitalList2,hospitalList3,hospitalList4;
     ArrayList<Hospital> hospitalDirUpdate;
     HospitalDirectory hospDir;
-    Community c1,c2,c3,c4,c5;
-    ArrayList<Community> communityList1,communityList2,communityList3,communityMasterList;
-    City cy1,cy2,cy3;
+    Community c1,c2,c3,c4;
+    ArrayList<Community> communityList1,communityList2,communityList3,communityList4,communityMasterList;
+    MasterDB masterRow1,masterRow2,masterRow3,masterRow4;
+    MasterDBDirectory masterTable;
+    ArrayList<MasterDB> masterList;
+    public ArrayList<Community> getCommunityList4() {
+        return communityList4;
+    }
+
+    public void setCommunityList4(ArrayList<Community> communityList4) {
+        this.communityList4 = communityList4;
+    }
+    City cy1,cy2,cy3,cy4;
+
+    public City getCy4() {
+        return cy4;
+    }
+
+    public void setCy4(City cy4) {
+        this.cy4 = cy4;
+    }
     ArrayList<City> cityList;
     CityDirectory cityDir;
     Doctor d1,d2,d3,d4;
@@ -31,6 +49,58 @@ public class ConfigureSystem {
     Patient pat1,pat2,pat3,pat4,pat5,pat6;
     PatientDirectory patDir;
     VitalSigns vs1,vs2,vs3;
+    Encounter ench1,ench2;
+    ArrayList<Encounter> encList,encHList;
+    EncounterHistory encH;
+    
+    
+    public MasterDB getMasterRow1() {
+        return masterRow1;
+    }
+
+    public void setMasterRow1(MasterDB masterRow1) {
+        this.masterRow1 = masterRow1;
+    }
+
+    public MasterDB getMasterRow2() {
+        return masterRow2;
+    }
+
+    public void setMasterRow2(MasterDB masterRow2) {
+        this.masterRow2 = masterRow2;
+    }
+
+    public MasterDB getMasterRow3() {
+        return masterRow3;
+    }
+
+    public void setMasterRow3(MasterDB masterRow3) {
+        this.masterRow3 = masterRow3;
+    }
+
+    public MasterDB getMasterRow4() {
+        return masterRow4;
+    }
+
+    public void setMasterRow4(MasterDB masterRow4) {
+        this.masterRow4 = masterRow4;
+    }
+
+    public MasterDBDirectory getMasterTable() {
+        return masterTable;
+    }
+
+    public void setMasterTable(MasterDBDirectory masterTable) {
+        this.masterTable = masterTable;
+    }
+
+    public ArrayList<MasterDB> getMasterList() {
+        return masterList;
+    }
+
+    public void setMasterList(ArrayList<MasterDB> masterList) {
+        this.masterList = masterList;
+    }
 
     public ArrayList<Person> getP() {
         return p;
@@ -191,26 +261,26 @@ public class ConfigureSystem {
     public void setHp4(Hospital hp4) {
         this.hp4 = hp4;
     }
-
-    public Hospital getHp5() {
-        return hp5;
-    }
-
-    public void setHp5(Hospital hp5) {
-        this.hp5 = hp5;
-    }
-
-    public Hospital getHp6() {
-        return hp6;
-    }
-
-    public void setHp6(Hospital hp6) {
-        this.hp6 = hp6;
-    }
-
-    public Hospital getHp7() {
-        return hp7;
-    }
+//
+//    public Hospital getHp5() {
+//        return hp5;
+//    }
+//
+//    public void setHp5(Hospital hp5) {
+//        this.hp5 = hp5;
+//    }
+//
+//    public Hospital getHp6() {
+//        return hp6;
+//    }
+//
+//    public void setHp6(Hospital hp6) {
+//        this.hp6 = hp6;
+//    }
+//
+//    public Hospital getHp7() {
+//        return hp7;
+//    }
 
     public ArrayList<City> getCityList() {
         return cityList;
@@ -355,34 +425,34 @@ public class ConfigureSystem {
     public void setVs3(VitalSigns vs3) {
         this.vs3 = vs3;
     }
-
-    public void setHp7(Hospital hp7) {
-        this.hp7 = hp7;
-    }
-
-    public Hospital getHp8() {
-        return hp8;
-    }
-
-    public void setHp8(Hospital hp8) {
-        this.hp8 = hp8;
-    }
-
-    public Hospital getHp9() {
-        return hp9;
-    }
-
-    public void setHp9(Hospital hp9) {
-        this.hp9 = hp9;
-    }
-
-    public Hospital getHp10() {
-        return hp10;
-    }
-
-    public void setHp10(Hospital hp10) {
-        this.hp10 = hp10;
-    }
+//
+//    public void setHp7(Hospital hp7) {
+//        this.hp7 = hp7;
+//    }
+//
+//    public Hospital getHp8() {
+//        return hp8;
+//    }
+//
+//    public void setHp8(Hospital hp8) {
+//        this.hp8 = hp8;
+//    }
+//
+//    public Hospital getHp9() {
+//        return hp9;
+//    }
+//
+//    public void setHp9(Hospital hp9) {
+//        this.hp9 = hp9;
+//    }
+//
+//    public Hospital getHp10() {
+//        return hp10;
+//    }
+//
+//    public void setHp10(Hospital hp10) {
+//        this.hp10 = hp10;
+//    }
 
     public ArrayList<Hospital> getHospitalList1() {
         return hospitalList1;
@@ -416,13 +486,13 @@ public class ConfigureSystem {
         this.hospitalList4 = hospitalList4;
     }
 
-    public ArrayList<Hospital> getHospitalList5() {
-        return hospitalList5;
-    }
-
-    public void setHospitalList5(ArrayList<Hospital> hospitalList5) {
-        this.hospitalList5 = hospitalList5;
-    }
+//    public ArrayList<Hospital> getHospitalList5() {
+//        return hospitalList5;
+//    }
+//
+//    public void setHospitalList5(ArrayList<Hospital> hospitalList5) {
+//        this.hospitalList5 = hospitalList5;
+//    }
 
     public ArrayList<Hospital> getHospitalDirUpdate() {
         return hospitalDirUpdate;
@@ -471,14 +541,14 @@ public class ConfigureSystem {
     public void setC4(Community c4) {
         this.c4 = c4;
     }
-
-    public Community getC5() {
-        return c5;
-    }
-
-    public void setC5(Community c5) {
-        this.c5 = c5;
-    }
+//
+//    public Community getC5() {
+//        return c5;
+//    }
+//
+//    public void setC5(Community c5) {
+//        this.c5 = c5;
+//    }
 
     public ArrayList<Community> getCommunityList1() {
         return communityList1;
@@ -589,68 +659,71 @@ public class ConfigureSystem {
         houseList5.add(h10);
         
         hp1 = new Hospital("HP1","hospital1",d1);
-        hp2 = new Hospital("HP2","hospital2",d1);
-        hp3 = new Hospital("HP3","hospital3",d1);
-        hp4 = new Hospital("HP4","hospital4",d2);
-        hp5 = new Hospital("HP5","hospital5",d2);
-        hp6 = new Hospital("HP6","hospital6",d2);
-        hp7 = new Hospital("HP7","hospital7",d3);
-        hp8 = new Hospital("HP8","hospital8",d3);
-        hp9 = new Hospital("HP9","hospital9",d4);
-        hp10 = new Hospital("HP10","hospital10",d4);
+        hp2 = new Hospital("HP2","hospital2",d2);
+        hp3 = new Hospital("HP3","hospital3",d3);
+        hp4 = new Hospital("HP4","hospital4",d4);
+//        hp5 = new Hospital("HP5","hospital5",d2);
+//        hp6 = new Hospital("HP6","hospital6",d2);
+//        hp7 = new Hospital("HP7","hospital7",d3);
+//        hp8 = new Hospital("HP8","hospital8",d3);
+//        hp9 = new Hospital("HP9","hospital9",d4);
+//        hp10 = new Hospital("HP10","hospital10",d4);
         hospitalList1 = new ArrayList<>();
         hospitalList2 = new ArrayList<>();
         hospitalList3 = new ArrayList<>();
         hospitalList4 = new ArrayList<>();
-        hospitalList5 = new ArrayList<>();
+//        hospitalList5 = new ArrayList<>();
         hospitalList1.add(hp1);
-        hospitalList1.add(hp2);
-        hospitalList2.add(hp3);
-        hospitalList2.add(hp4);
-        hospitalList3.add(hp5);
-        hospitalList3.add(hp6);
-        hospitalList4.add(hp7);
-        hospitalList4.add(hp8);
-        hospitalList5.add(hp9);
-        hospitalList5.add(hp10);
+//        hospitalList1.add(hp2);
+        hospitalList2.add(hp2);
+//        hospitalList2.add(hp4);
+        hospitalList3.add(hp3);
+//        hospitalList3.add(hp6);
+        hospitalList4.add(hp4);
+//        hospitalList4.add(hp8);
+//        hospitalList5.add(hp9);
+//        hospitalList5.add(hp10);
         
         hospitalDirUpdate = new ArrayList<>();
         hospitalDirUpdate.add(hp1);
         hospitalDirUpdate.add(hp2);
         hospitalDirUpdate.add(hp3);
         hospitalDirUpdate.add(hp4);
-        hospitalDirUpdate.add(hp5);
-        hospitalDirUpdate.add(hp6);
-        hospitalDirUpdate.add(hp7);
-        hospitalDirUpdate.add(hp8);
-        hospitalDirUpdate.add(hp8);
-        hospitalDirUpdate.add(hp10);        
+//        hospitalDirUpdate.add(hp5);
+//        hospitalDirUpdate.add(hp6);
+//        hospitalDirUpdate.add(hp7);
+//        hospitalDirUpdate.add(hp8);
+//        hospitalDirUpdate.add(hp8);
+//        hospitalDirUpdate.add(hp10);        
         hospDir = new HospitalDirectory(hospitalDirUpdate);
         
         c1 = new Community(houseList1,"comm1",hospitalList1,"C1");
         c2 = new Community(houseList2,"comm2",hospitalList2,"C2");
         c3 = new Community(houseList3,"comm3",hospitalList3,"C3");
         c4 = new Community(houseList4,"comm4",hospitalList4,"C4");
-        c5 = new Community(houseList5,"comm5",hospitalList5,"C5");
+//        c5 = new Community(houseList5,"comm5",hospitalList5,"C5");
         communityList1 = new ArrayList<>();
         communityList2 = new ArrayList<>();
         communityList3 = new ArrayList<>();
+        communityList4 = new ArrayList<>();
         communityList1.add(c1);
-        communityList1.add(c2);
-        communityList2.add(c3);
-        communityList2.add(c4);
-        communityList3.add(c5);
+        communityList2.add(c2);
+        communityList3.add(c3);
+        communityList4.add(c4);
+        
+//        communityList3.add(c5);
         communityMasterList = new ArrayList<Community>();
         communityMasterList.add(c1);
         communityMasterList.add(c2);
         communityMasterList.add(c3);
         communityMasterList.add(c4);
-        communityMasterList.add(c5);
+//        communityMasterList.add(c5);
         
         
         cy1 = new City(hospitalList1,communityList1,"Boston","CY1");
         cy2 = new City(hospitalList2,communityList2,"Needham","CY2");
         cy3 = new City(hospitalList3,communityList3,"Worcester","CY3");
+        cy4 = new City(hospitalList4,communityList4,"Brighton","CY4");
         
         cityList = new ArrayList<City>();
         cityList.add(cy1);
@@ -658,10 +731,27 @@ public class ConfigureSystem {
         cityList.add(cy3);
         cityDir = new CityDirectory(cityList);
         
+        masterRow1 = new MasterDB(cy1,hp1,d1,c1);
+        masterRow2 = new MasterDB(cy2,hp2,d2,c2);
+        masterRow3 = new MasterDB(cy3,hp3,d3,c3);
+        masterRow4 = new MasterDB(cy4,hp4,d4,c4);
         
         
+        masterList = new ArrayList<MasterDB>();
+        masterList.add(masterRow1);
+        masterList.add(masterRow2);
+        masterList.add(masterRow3);
+        masterList.add(masterRow4);
+        masterTable = new MasterDBDirectory(masterList);
+        
+        ench1 = new Encounter("2021-11-22T16:44:58.643067","E1",d1,pat1);
+        ench2 = new Encounter("2021-11-22T16:44:58.643067","E1",d1,pat1); 
+        encHList = new ArrayList<Encounter>();
+        encHList.add(ench1);
+        encHList.add(ench2);
+        encH = new EncounterHistory(encHList);
         
     }
         
-  
+    
 }
