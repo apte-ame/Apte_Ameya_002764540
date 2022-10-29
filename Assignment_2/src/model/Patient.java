@@ -22,5 +22,45 @@ public class Patient extends Person{
         bloodGroup = p.getBloodGroup();
         this.vitalSign = vitalSign;
     }
+
+    public String getPatientUserId() {
+        return patientUserId;
+    }
+
+    public void setPatientUserId(String patientUserId) {
+        this.patientUserId = patientUserId;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    public String getPatientPassword() {
+        return patientPassword;
+    }
+
+    public void setPatientPassword(String patientPassword) {
+        this.patientPassword = patientPassword;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public VitalSigns getVitalSign() {
+        return vitalSign;
+    }
+
+    public void setVitalSign(VitalSigns vitalSign) {
+        this.vitalSign = vitalSign;
+    }
     
 }

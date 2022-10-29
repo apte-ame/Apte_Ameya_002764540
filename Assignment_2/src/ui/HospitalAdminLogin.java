@@ -10,19 +10,19 @@ import model.*;
  *
  * @author AMEYA A
  */
-public class LoginJFrame extends javax.swing.JFrame {
+public class HospitalAdminLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginJFrame
+     * Creates new form PatientLogin
      * 
      */
     ConfigureSystem cSysMain;
-    public LoginJFrame(ConfigureSystem cSysMain) {
+    public HospitalAdminLogin(ConfigureSystem cSysMain) {
         initComponents();
         this.cSysMain = cSysMain;
     }
     
-    public LoginJFrame(){
+    public HospitalAdminLogin(){
         initComponents();
     }
 
@@ -147,22 +147,19 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
-        PersonDirectory pDir = new PersonDirectory();
-//        ConfigureSystem cSys =  new ConfigureSystem();
-        ArrayList<Person> pList = cSysMain.getP();
-        Boolean check = pDir.verifyCred(pList,txtUserName.getText(), new String(jPassField.getPassword()));
-        if(check.equals(true)){
-            new PatientAppointmentBooking(cSysMain).setVisible(true);
-            this.setVisible(false);
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Incorrect Credentials");
-        }
+//        Boolean check = cSysMain.verifyHospCred(cSysMain.getHospAd(),txtUserName.getText(), new String(jPassField.getPassword()));
+//        if(check.equals(true)){
+//            new PatientAppointmentBooking(cSysMain).setVisible(true);
+//            this.setVisible(false);
+//        }
+//        else{
+//            JOptionPane.showMessageDialog(this,"Incorrect Credentials");
+//        }
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-        new SignUpJFrame().setVisible(true);
+        new PatientSignUp().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSignUpActionPerformed
 
@@ -193,20 +190,27 @@ public class LoginJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalAdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginJFrame().setVisible(true);
+                new HospitalAdminLogin().setVisible(true);
             }
         });
     }

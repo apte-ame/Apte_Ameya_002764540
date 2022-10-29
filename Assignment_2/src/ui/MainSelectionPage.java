@@ -118,7 +118,7 @@ public class MainSelectionPage extends javax.swing.JFrame {
 
     private void btnPatientLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientLoginActionPerformed
         // TODO add your handling code here:
-        new LoginJFrame(cSysMain).setVisible(true);
+        new PatientLogin(cSysMain).setVisible(true);
         this.setVisible(false);
         //        splitPane.setRightComponent(dash);
         //        new DashBoardJFrame().setVisible(true);
@@ -127,25 +127,25 @@ public class MainSelectionPage extends javax.swing.JFrame {
 
     private void btnSysAdminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSysAdminLoginActionPerformed
         // TODO add your handling code here:
-        new LoginJFrame(cSysMain).setVisible(true);
+        new SystemAdminLogin(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSysAdminLoginActionPerformed
 
     private void btnHosAdminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHosAdminLoginActionPerformed
         // TODO add your handling code here:
-        new LoginJFrame(cSysMain).setVisible(true);
+        new HospitalAdminLogin(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnHosAdminLoginActionPerformed
 
     private void btnDoctorLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorLoginActionPerformed
         // TODO add your handling code here:
-        new LoginJFrame(cSysMain).setVisible(true);
+        new DoctorLogin(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnDoctorLoginActionPerformed
 
     private void btnComAdminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComAdminLoginActionPerformed
         // TODO add your handling code here:
-        new LoginJFrame(cSysMain).setVisible(true);
+        new CommunityAdminLogin(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnComAdminLoginActionPerformed
 
