@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+import model.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,8 +18,56 @@ public class DashBoardJFrame extends javax.swing.JFrame {
      */
     public DashBoardJFrame() {
         initComponents();
+        myInitComponents();
     }
-
+    private void myInitComponents(){
+        
+        ConfigureSystem cSys = new ConfigureSystem();
+        String[] cityNames = new String[cSys.getCityList().size()];
+        int count = 0;
+        for(City city:cSys.getCityList()){
+            cityNames[count] = city.getCityName();
+            count = count + 1;
+        }
+//        String[] cityNames = new String[3];
+//        cityNames[0] = cSys.getCy1().getCityName();
+//        cityNames[1] = cSys.getCy2().getCityName();
+//        cityNames[2] = cSys.getCy3().getCityName();
+        
+        String[] communityNames = new String[cSys.getCommunityMasterList().size()];
+        int count1 = 0;
+        for(Community com:cSys.getCommunityMasterList()){
+            communityNames[count1] = com.getCommunityName();
+            count1 = count1 + 1;
+        }
+//        communityNames[0] = cSys.getC1().getCommunityName();
+//        communityNames[1] = cSys.getC2().getCommunityName();
+//        communityNames[2] = cSys.getC3().getCommunityName();
+//        communityNames[3] = cSys.getC4().getCommunityName();
+//        communityNames[4] = cSys.getC5().getCommunityName();
+        
+        String[] hospitalNames = new String[cSys.getHospitalDirUpdate().size()];
+        int count2 = 0;
+        for(Hospital hp:cSys.getHospitalDirUpdate()){
+            hospitalNames[count2] = hp.getHospitalName();
+            count2 = count2 + 1;
+        }
+//        hospitalNames[0] = cSys.getHp1().getHospitalName();
+//        hospitalNames[1] = cSys.getHp2().getHospitalName();
+//        hospitalNames[2] = cSys.getHp3().getHospitalName();
+//        hospitalNames[3] = cSys.getHp4().getHospitalName();
+//        hospitalNames[4] = cSys.getHp5().getHospitalName();
+//        hospitalNames[5] = cSys.getHp6().getHospitalName();
+//        hospitalNames[6] = cSys.getHp7().getHospitalName();
+//        hospitalNames[7] = cSys.getHp8().getHospitalName();
+//        hospitalNames[8] = cSys.getHp9().getHospitalName();
+//        hospitalNames[9] = cSys.getHp10().getHospitalName();
+        
+        
+        cmbBoxCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(communityNames));
+        cmbBoxCity.setModel(new javax.swing.DefaultComboBoxModel<>(cityNames));
+        cmbBoxHospital.setModel(new javax.swing.DefaultComboBoxModel<>(hospitalNames));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,18 +78,20 @@ public class DashBoardJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        lblName = new javax.swing.JLabel();
+        tblDetails = new javax.swing.JTable();
         lblCity = new javax.swing.JLabel();
         lblCommunity = new javax.swing.JLabel();
-        txtName = new java.awt.TextField();
-        txtCommunity = new java.awt.TextField();
-        cmbBox = new javax.swing.JComboBox<>();
+        cmbBoxCity = new javax.swing.JComboBox<>();
         lblBookAppmt = new javax.swing.JLabel();
+        btnLandingPage = new java.awt.Button();
+        lblName1 = new javax.swing.JLabel();
+        cmbBoxCommunity = new javax.swing.JComboBox<>();
+        cmbBoxHospital = new javax.swing.JComboBox<>();
+        btnSearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -48,7 +101,7 @@ public class DashBoardJFrame extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Name", "City", "Id", "Community"
+                "Doctors Name", "Hospital", "City", "Community"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -59,35 +112,53 @@ public class DashBoardJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-
-        lblName.setText("Name");
+        tblDetails.setName("tblDetails"); // NOI18N
+        jScrollPane1.setViewportView(tblDetails);
+        tblDetails.getAccessibleContext().setAccessibleDescription("");
 
         lblCity.setText("City");
 
         lblCommunity.setText("Community");
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
+        cmbBoxCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Needham", "Brookline", "Brighton" }));
+        cmbBoxCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-
-        txtCommunity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCommunityActionPerformed(evt);
-            }
-        });
-
-        cmbBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Needham", "Brookline", "Brighton" }));
-        cmbBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbBoxActionPerformed(evt);
+                cmbBoxCityActionPerformed(evt);
             }
         });
 
         lblBookAppmt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBookAppmt.setText("Book an appointment");
+
+        btnLandingPage.setLabel("Landing Page");
+        btnLandingPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLandingPageActionPerformed(evt);
+            }
+        });
+
+        lblName1.setText("Hospital");
+
+        cmbBoxCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Needham", "Brookline", "Brighton" }));
+        cmbBoxCommunity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBoxCommunityActionPerformed(evt);
+            }
+        });
+
+        cmbBoxHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Needham", "Brookline", "Brighton" }));
+        cmbBoxHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBoxHospitalActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,38 +171,50 @@ public class DashBoardJFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(277, 277, 277)
-                        .addComponent(lblBookAppmt, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblBookAppmt, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCity)
-                            .addComponent(lblName)
-                            .addComponent(lblCommunity))
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCommunity, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblCommunity)
+                            .addComponent(lblName1))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbBoxCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbBoxHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmbBoxCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(214, 214, 214)
+                                .addComponent(btnSearch)))))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(lblBookAppmt)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCity)
-                    .addComponent(cmbBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCommunity, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtCommunity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCity)
+                            .addComponent(cmbBoxCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCommunity)
+                            .addComponent(cmbBoxCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSearch))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblName1)
+                            .addComponent(cmbBoxHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBookAppmt)
+                            .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -139,18 +222,79 @@ public class DashBoardJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void cmbBoxCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxCityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+        ConfigureSystem cSys = new ConfigureSystem();
+               
+        for(City c:cSys.getCityList()){
+            if(c.getCityName().equals(cmbBoxCity.getSelectedItem().toString())){
+                String[] commNames = new String[c.getCommList().size()];
+                String[] hospNames = new String[c.getHospList().size()];
+                int count1 = 0, count2 = 0;
+                for(Community com:c.getCommList()){
+                    commNames[count1] = com.getCommunityName();
+                    count1 = count1 + 1;
+                }
+                for(Hospital hosp:c.getHospList()){
+                    hospNames[count2] = hosp.getHospitalName();
+                    count2 = count2 + 1;
+                }
+                
+                cmbBoxCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(commNames));
+                cmbBoxHospital.setModel(new javax.swing.DefaultComboBoxModel<>(hospNames));
+            }
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_cmbBoxCityActionPerformed
 
-    private void txtCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCommunityActionPerformed
+    private void btnLandingPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingPageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCommunityActionPerformed
+        new MainJFrame().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnLandingPageActionPerformed
 
-    private void cmbBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxActionPerformed
+    private void cmbBoxCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxCommunityActionPerformed
         // TODO add your handling code here:
-        System.out.println(cmbBox.getSelectedItem());
-    }//GEN-LAST:event_cmbBoxActionPerformed
+        
+    }//GEN-LAST:event_cmbBoxCommunityActionPerformed
+
+    private void cmbBoxHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxHospitalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbBoxHospitalActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        ConfigureSystem cSys = new ConfigureSystem();
+        String selectedCity = cmbBoxCity.getSelectedItem().toString();
+        String selectedCommunity = cmbBoxCommunity.getSelectedItem().toString();
+        String selectedHospital = cmbBoxHospital.getSelectedItem().toString();
+        String doctor = new String();
+        for(City c:cSys.getCityList()){
+            if(c.getCityName().equals(selectedCity)){
+                for(Hospital hosp:c.getHospList()){
+                    if(hosp.getHospitalName().equals(selectedHospital)){
+                        doctor = hosp.getDoctor().getDoctorName();
+                    }
+                }
+            }
+        }
+//        String selectedDoctor = 
+        DefaultTableModel model = (DefaultTableModel)tblDetails.getModel();
+        model.setRowCount(0);
+//        for(Employee emp: empDirTemp){
+            Object[] row = new Object[4];
+            row[0] = doctor;
+            row[1] = selectedHospital;
+            row[2] = selectedCity;
+            row[3] = selectedCommunity;
+            
+            model.addRow(row);
+        
+//        clearAllTextBoxes();
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,14 +332,16 @@ public class DashBoardJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbBox;
+    private java.awt.Button btnLandingPage;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cmbBoxCity;
+    private javax.swing.JComboBox<String> cmbBoxCommunity;
+    private javax.swing.JComboBox<String> cmbBoxHospital;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBookAppmt;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblCommunity;
-    private javax.swing.JLabel lblName;
-    private java.awt.TextField txtCommunity;
-    private java.awt.TextField txtName;
+    private javax.swing.JLabel lblName1;
+    private javax.swing.JTable tblDetails;
     // End of variables declaration//GEN-END:variables
 }

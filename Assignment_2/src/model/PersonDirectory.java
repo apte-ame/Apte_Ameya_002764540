@@ -18,9 +18,28 @@ public class PersonDirectory {
     }
     
     public ArrayList<Person> createPersonDir(){
-        Person p = new Person("Ameya","1234",23,"M","22","abcd","A+");
-        personDir.add(p);
-        System.out.println(p.getPersonName());
+        Person p1 = new Person("Jim","1234",30,"M","H1","abcd","A+");
+        Person p2 = new Person("Marcus","1234",23,"M","H2","abcd","B+");
+        Person p3 = new Person("Tom","1234",56,"M","H3","abcd","A-");
+        Person p4 = new Person("Jerry","1234",37,"F","H4","abcd","O+");
+        Person p5 = new Person("Andy","1234",60,"M","H5","abcd","A+");
+        Person p6 = new Person("John","1234",28,"M","H6","abcd","B+");
+        Person p7 = new Person("Mary","1234",46,"F","H7","abcd","O-");
+        Person p8 = new Person("Jenny","1234",41,"F","H8","abcd","A+");
+        Person p9 = new Person("May","1234",26,"F","H9","abcd","A-");
+        Person p10 = new Person("Harry","1234",52,"M","H10","abcd","B+");
+        
+        
+        personDir.add(p1);
+        personDir.add(p2);
+        personDir.add(p3);
+        personDir.add(p4);
+        personDir.add(p5);
+        personDir.add(p6);
+        personDir.add(p7);
+        personDir.add(p8);
+        personDir.add(p9);
+        personDir.add(p10);
         return personDir;
 
     }

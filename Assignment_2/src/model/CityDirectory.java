@@ -10,16 +10,16 @@ import java.util.ArrayList;
  *
  * @author AMEYA A
  */
-public class DoctorDirectory {
-    private ArrayList<Doctor> doctorDir;
-    
-    public DoctorDirectory(ArrayList<Doctor> doctorList) {
-        this.doctorDir = new ArrayList<Doctor>();
-        this.doctorDir = doctorList;
-    }
+public class CityDirectory {
+    private ArrayList<City> cityList;
 
-    public DoctorDirectory() {
+    public CityDirectory(ArrayList<City> cityList){
+        this.cityList = new ArrayList<City>();
+        this.cityList = cityList;
+    }
+    
+    public CityDirectory() {
         
     }
-
+    
 }

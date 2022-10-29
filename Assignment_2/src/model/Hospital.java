@@ -13,5 +13,38 @@ import java.util.ArrayList;
 public class Hospital {
     private String hospitalName;
     private String hospitalId;
+    private Doctor doctor;
+
+    public Hospital(String hospitalName, String hospitalId, Doctor doctor) {
+        this.hospitalName = hospitalName;
+        this.hospitalId = hospitalId;
+        this.doctor = doctor;
+    }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+
+    public String getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(String hospitalId) {
+        this.hospitalId = hospitalId;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    
     
 }

@@ -16,7 +16,7 @@ public class Person {
     private String houseId;
     private String personPassword;
     private String bloodGroup;
-
+   
     public Person() {
     }
 

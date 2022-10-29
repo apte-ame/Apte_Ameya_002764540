@@ -9,6 +9,12 @@ package model;
  * @author AMEYA A
  */
 public class VitalSigns {
-    private int vitalSignsId;
+    private String vitalSignsId;
     private String vitalSign;
+
+    public VitalSigns(String vitalSignsId, String vitalSign) {
+        this.vitalSignsId = vitalSignsId;
+        this.vitalSign = vitalSign;
+    }
+    
 }
