@@ -15,7 +15,9 @@ public class ConfigureSystem {
 
     ArrayList<Person> p;
     House h1,h2,h3,h4,h5,h6,h7,h8,h9,h10;
-    ArrayList<House> houseList1,houseList2,houseList3,houseList4,houseList5;
+    ArrayList<House> houseList1,houseList2,houseList3,houseList4,houseList5,allHouses;
+    ArrayList<ArrayList<House>> masterHouseListy;
+    ArrayList<ArrayList<Community>> masterCommunityListy;
     Hospital hp1,hp2,hp3,hp4;
     ArrayList<Hospital> hospitalList1,hospitalList2,hospitalList3,hospitalList4;
     ArrayList<Hospital> hospitalDirUpdate;
@@ -41,6 +43,31 @@ public class ConfigureSystem {
     VitalSigns vs1,vs2,vs3;
     Encounter ench1,ench2;
     City cy1,cy2,cy3,cy4;
+
+    public ArrayList<ArrayList<Community>> getMasterCommunityListy() {
+        return masterCommunityListy;
+    }
+
+    public void setMasterCommunityListy(ArrayList<ArrayList<Community>> masterCommunityListy) {
+        this.masterCommunityListy = masterCommunityListy;
+    }
+
+    public ArrayList<House> getAllHouses() {
+        return allHouses;
+    }
+
+    public void setAllHouses(ArrayList<House> allHouses) {
+        this.allHouses = allHouses;
+    }
+
+    public ArrayList<ArrayList<House>> getMasterHouseListy() {
+        return masterHouseListy;
+    }
+
+    public void setMasterHouseListy(ArrayList<ArrayList<House>> masterHouseListy) {
+        this.masterHouseListy = masterHouseListy;
+    }
+    
     public ArrayList<Community> getCommunityList4() {
         return communityList4;
     }
@@ -842,6 +869,31 @@ public class ConfigureSystem {
         sysAd = new SystemAdminNew("123", "abc");
         comAd = new CommunityAdminNew("123","abc");
         hospAd = new HospitalAdminNew("123", "abc");
+        allHouses = new ArrayList<>();
+        allHouses.add(h1);
+        allHouses.add(h2);
+        allHouses.add(h3);
+        allHouses.add(h4);
+        allHouses.add(h5);
+        allHouses.add(h6);
+        allHouses.add(h7);
+        allHouses.add(h8);
+        allHouses.add(h9);
+        allHouses.add(h10);
+        masterHouseListy = new ArrayList<>();
+        masterHouseListy.add(houseList1);
+        masterHouseListy.add(houseList2);
+        masterHouseListy.add(houseList3);
+        masterHouseListy.add(houseList4);
+        masterHouseListy.add(houseList5);
+        masterCommunityListy = new ArrayList<>();
+        masterCommunityListy.add(communityList1);
+        masterCommunityListy.add(communityList2);
+        masterCommunityListy.add(communityList3);
+        masterCommunityListy.add(communityList4);
+        
+        
+        
       
     }
     

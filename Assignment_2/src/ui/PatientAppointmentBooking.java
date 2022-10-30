@@ -29,51 +29,51 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
     
     public PatientAppointmentBooking() {
         initComponents();
-        myInitComponents(cSysMain);
+        myInitComponents(this.cSysMain);
     }
     
     private void myInitComponents(ConfigureSystem cSysMain){
         
 //        ConfigureSystem cSys = new ConfigureSystem();
-        String[] cityNames = new String[cSysMain.getCityList().size()];
+        String[] cityNames = new String[this.cSysMain.getCityList().size()];
         int count = 0;
-        for(City city:cSysMain.getCityList()){
+        for(City city:this.cSysMain.getCityList()){
             cityNames[count] = city.getCityName();
             count = count + 1;
         }
 //        String[] cityNames = new String[3];
-//        cityNames[0] = cSysMain.getCy1().getCityName();
-//        cityNames[1] = cSysMain.getCy2().getCityName();
-//        cityNames[2] = cSysMain.getCy3().getCityName();
+//        cityNames[0] = this.cSysMain.getCy1().getCityName();
+//        cityNames[1] = this.cSysMain.getCy2().getCityName();
+//        cityNames[2] = this.cSysMain.getCy3().getCityName();
         
-        String[] communityNames = new String[cSysMain.getCommunityMasterList().size()];
+        String[] communityNames = new String[this.cSysMain.getCommunityMasterList().size()];
         int count1 = 0;
-        for(Community com:cSysMain.getCommunityMasterList()){
+        for(Community com:this.cSysMain.getCommunityMasterList()){
             communityNames[count1] = com.getCommunityName();
             count1 = count1 + 1;
         }
-//        communityNames[0] = cSysMain.getC1().getCommunityName();
-//        communityNames[1] = cSysMain.getC2().getCommunityName();
-//        communityNames[2] = cSysMain.getC3().getCommunityName();
-//        communityNames[3] = cSysMain.getC4().getCommunityName();
-//        communityNames[4] = cSysMain.getC5().getCommunityName();
+//        communityNames[0] = this.cSysMain.getC1().getCommunityName();
+//        communityNames[1] = this.cSysMain.getC2().getCommunityName();
+//        communityNames[2] = this.cSysMain.getC3().getCommunityName();
+//        communityNames[3] = this.cSysMain.getC4().getCommunityName();
+//        communityNames[4] = this.cSysMain.getC5().getCommunityName();
         
-        String[] hospitalNames = new String[cSysMain.getHospitalDirUpdate().size()];
+        String[] hospitalNames = new String[this.cSysMain.getHospitalDirUpdate().size()];
         int count2 = 0;
-        for(Hospital hp:cSysMain.getHospitalDirUpdate()){
+        for(Hospital hp:this.cSysMain.getHospitalDirUpdate()){
             hospitalNames[count2] = hp.getHospitalName();
             count2 = count2 + 1;
         }
-//        hospitalNames[0] = cSysMain.getHp1().getHospitalName();
-//        hospitalNames[1] = cSysMain.getHp2().getHospitalName();
-//        hospitalNames[2] = cSysMain.getHp3().getHospitalName();
-//        hospitalNames[3] = cSysMain.getHp4().getHospitalName();
-//        hospitalNames[4] = cSysMain.getHp5().getHospitalName();
-//        hospitalNames[5] = cSysMain.getHp6().getHospitalName();
-//        hospitalNames[6] = cSysMain.getHp7().getHospitalName();
-//        hospitalNames[7] = cSysMain.getHp8().getHospitalName();
-//        hospitalNames[8] = cSysMain.getHp9().getHospitalName();
-//        hospitalNames[9] = cSysMain.getHp10().getHospitalName();
+//        hospitalNames[0] = this.cSysMain.getHp1().getHospitalName();
+//        hospitalNames[1] = this.cSysMain.getHp2().getHospitalName();
+//        hospitalNames[2] = this.cSysMain.getHp3().getHospitalName();
+//        hospitalNames[3] = this.cSysMain.getHp4().getHospitalName();
+//        hospitalNames[4] = this.cSysMain.getHp5().getHospitalName();
+//        hospitalNames[5] = this.cSysMain.getHp6().getHospitalName();
+//        hospitalNames[6] = this.cSysMain.getHp7().getHospitalName();
+//        hospitalNames[7] = this.cSysMain.getHp8().getHospitalName();
+//        hospitalNames[8] = this.cSysMain.getHp9().getHospitalName();
+//        hospitalNames[9] = this.cSysMain.getHp10().getHospitalName();
         
         
         cmbBoxCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(communityNames));
@@ -83,7 +83,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)tblDetails.getModel();
         model.setRowCount(0);
 
-        for(MasterDB myRow:cSysMain.getMasterList()){
+        for(MasterDB myRow:this.cSysMain.getMasterList()){
             Object[] row = new Object[4];
             row[0] = myRow.getD().getDoctorName();
             row[1] = myRow.getH().getHospitalName();
@@ -93,20 +93,20 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         }
 
         
-//        for(Doctor d :cSysMain.getDoctorList()){
+//        for(Doctor d :this.cSysMain.getDoctorList()){
 //            Object[] row = new Object[4];
-//            for(Hospital h:cSysMain.getHospitalDirUpdate()){
+//            for(Hospital h:this.cSysMain.getHospitalDirUpdate()){
 //                if(h.getDoctor().getDoctorName().equals(d.getDoctorName())){
 //
 //                    row[0] = d.getDoctorName();
 //                    row[1] = h.getHospitalName();
-//                    for(City c:cSysMain.getCityList()){
+//                    for(City c:this.cSysMain.getCityList()){
 //                        for(Hospital hos:c.getHospList()){
 //                            if(hos.getHospitalName().equals(h.getHospitalName())){
 //                                row[2] = c.getCityName();
 //                            }
 //                        }
-//                    for(Community com: cSysMain.getCommunityMasterList()){
+//                    for(Community com: this.cSysMain.getCommunityMasterList()){
 //                        for(Hospital hos:com.getHosp()){
 //                            if(hos.getHospitalName().equals(h.getHospitalName())){
 //                                row[3] = com.getCommunityName();
@@ -322,7 +322,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        ConfigureSystem cSys = new ConfigureSystem();
                
-        for(City c:cSysMain.getCityList()){
+        for(City c:this.cSysMain.getCityList()){
             if(c.getCityName().equals(cmbBoxCity.getSelectedItem().toString())){
                 String[] commNames = new String[c.getCommList().size()];
                 String[] hospNames = new String[c.getHospList().size()];
@@ -348,7 +348,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
 
     private void btnHomePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomePageActionPerformed
         // TODO add your handling code here:
-        new MainSelectionPage(cSysMain).setVisible(true);
+        new MainSelectionPage(this.cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnHomePageActionPerformed
 
@@ -368,7 +368,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         String selectedCommunity = cmbBoxCommunity.getSelectedItem().toString();
         String selectedHospital = cmbBoxHospital.getSelectedItem().toString();
         String doctorName = new String();
-//        for(City c:cSysMain.getCityList()){
+//        for(City c:this.cSysMain.getCityList()){
 //            if(c.getCityName().equals(selectedCity)){
 //                for(Hospital hosp:c.getHospList()){
 //                    if(hosp.getHospitalName().equals(selectedHospital)){
@@ -377,7 +377,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
 //                }
 //            }
 //        }
-        for(MasterDB myRow:cSysMain.getMasterList()){
+        for(MasterDB myRow:this.cSysMain.getMasterList()){
             if((selectedCity.equals(myRow.getC().getCityName())) &&
                 selectedCommunity.equals(myRow.getCom().getCommunityName()) &&
                 selectedHospital.equals(myRow.getH().getHospitalName())){
@@ -410,10 +410,10 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         LocalDateTime now = LocalDateTime.now();
         now = now.plusDays(3);
         Encounter enc;
-        for(Doctor d:cSysMain.getDoctorList()){
+        for(Doctor d:this.cSysMain.getDoctorList()){
             if(d.getDoctorName().equals(tblDetails.getModel().getValueAt(tblDetails.getSelectedRow(), 0).toString())){
                 enc = new Encounter(now.toString(),"E3",d,pat);
-                cSysMain.getEncList().add(enc);
+                this.cSysMain.getEncList().add(enc);
             }
         }
         

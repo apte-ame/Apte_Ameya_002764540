@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
@@ -12,6 +13,8 @@ import model.ConfigureSystem;
 import model.Doctor;
 import model.Encounter;
 import model.Hospital;
+import model.House;
+import model.MasterDB;
 import model.Patient;
 
 /**
@@ -97,6 +100,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         btnUpdateCity = new javax.swing.JButton();
         btnCreateCity = new javax.swing.JButton();
         btnDeleteCity = new javax.swing.JButton();
+        btnLandingPage = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -380,6 +384,13 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnLandingPage.setLabel("Home Page");
+        btnLandingPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLandingPageActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -414,7 +425,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                             .addComponent(txtHouse)
                             .addComponent(txtCityName)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtHosId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -449,8 +460,14 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                             .addComponent(btnDeleteCity))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(115, 115, 115)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnViewHos)
                             .addComponent(btnUpdateHos)
@@ -494,9 +511,10 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -508,8 +526,9 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCreateComm))))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
                         .addComponent(btnViewHos)
-                        .addGap(5, 5, 5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdateHos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCreateHos)
@@ -534,7 +553,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                         .addComponent(btnUpdatePat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCreatePat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addComponent(btnDeletePat)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,9 +564,9 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                         .addComponent(btnUpdateCity)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCreateCity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addComponent(btnDeleteCity)))
-                .addGap(42, 42, 42)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHosId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -577,7 +596,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         pack();
@@ -708,15 +727,59 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     private void btnCreateHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHosActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblHospTable.getSelectedRow();
-
+        if(txtHosId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the hospitalId");   
+        }
+        else if(txtHosName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the hospitalName");   
+        }
+        else if(txtDocName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Doctors Name");   
+        }
+        else if(txtCommId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Community Id");
+        }
+        else if(txtCommName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Community Name");
+        }
+        else if(txtHouse.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the House Name");
+        }
+        else if(txtCityId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the City Id");
+        }
+        else if(txtCityName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the City Name");
+        }
+        else{
         DefaultTableModel modelHosp = (DefaultTableModel)tblHospTable.getModel();
         DefaultTableModel modelDoc = (DefaultTableModel)tblDoctor.getModel();
-        
+        House hNew = new House("HN1",txtHouse.getText());
         Doctor docNew = new Doctor(txtDocName.getText(), "123", "abc");
         Hospital hosNew = new Hospital(txtHosName.getText(),txtHosId.getText(),docNew);
+        ArrayList<House> hListNew = new ArrayList<House>();
+        ArrayList<Hospital> hosListNew = new ArrayList<Hospital>();
+        hListNew.add(hNew);
+        hosListNew.add(hosNew);
         cSysMain.getHospitalDirUpdate().add(hosNew);
+        cSysMain.getDoctorList().add(docNew);
+        cSysMain.getAllHouses().add(hNew);
+        cSysMain.getMasterHouseListy().add(hListNew);
+        Community commNew = new Community(hListNew,txtCommName.getText(),hosListNew,txtCommId.getText());
+        cSysMain.getCommunityMasterList().add(commNew);
+        ArrayList<Community> commListNew = new ArrayList<Community>();
+        commListNew.add(commNew);
+        cSysMain.getMasterCommunityListy().add(commListNew);
+        City cityNew = new City(hosListNew,commListNew,txtCityName.getText(),txtCityId.getText());
+        cSysMain.getCityList().add(cityNew);
+        MasterDB masterNew = new MasterDB(cityNew, hosNew, docNew, commNew);
+        cSysMain.getMasterList().add(masterNew);
+        
         populateHospTable(cSysMain);
         populateDoctorTable(cSysMain);
+        populateCityTable(cSysMain);
+        populateCommTable(cSysMain);
+        }
     }//GEN-LAST:event_btnCreateHosActionPerformed
 
     private void btnDeleteHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHosActionPerformed
@@ -787,6 +850,12 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteCityActionPerformed
 
+    private void btnLandingPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingPageActionPerformed
+        // TODO add your handling code here:
+        new MainSelectionPage(cSysMain).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnLandingPageActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -833,6 +902,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteDoc;
     private javax.swing.JButton btnDeleteHos;
     private javax.swing.JButton btnDeletePat;
+    private java.awt.Button btnLandingPage;
     private javax.swing.JButton btnUpdateCity;
     private javax.swing.JButton btnUpdateComm;
     private javax.swing.JButton btnUpdateDoc;

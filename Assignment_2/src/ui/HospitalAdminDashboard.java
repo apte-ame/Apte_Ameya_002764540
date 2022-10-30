@@ -4,7 +4,10 @@
  */
 package ui;
 
-import model.ConfigureSystem;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.*;
 
 /**
  *
@@ -19,6 +22,7 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
     public HospitalAdminDashboard(ConfigureSystem cSysMain) {
         initComponents();
         this.cSysMain = cSysMain;
+        populateHospTable(cSysMain);
     }
     public HospitalAdminDashboard() {
         initComponents();
@@ -32,21 +36,420 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblHospTable = new javax.swing.JTable();
+        btnViewHos = new javax.swing.JButton();
+        btnUpdateHos = new javax.swing.JButton();
+        btnCreateHos = new javax.swing.JButton();
+        btnDeleteHos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtHosId = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtHosName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtDocName = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtCommName = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtCommId = new javax.swing.JTextField();
+        txtHouse = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtCityId = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtCityName = new javax.swing.JTextField();
+        btnLandingPage = new java.awt.Button();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tblHospTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Hospital Id", "Hospital Name", "Doctor Name"
+            }
+        ));
+        jScrollPane1.setViewportView(tblHospTable);
+
+        btnViewHos.setText("View Hos");
+        btnViewHos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewHosActionPerformed(evt);
+            }
+        });
+
+        btnUpdateHos.setText("Update Hos");
+        btnUpdateHos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateHosActionPerformed(evt);
+            }
+        });
+
+        btnCreateHos.setText("Create Hos");
+        btnCreateHos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateHosActionPerformed(evt);
+            }
+        });
+
+        btnDeleteHos.setText("Delete Hos");
+        btnDeleteHos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteHosActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Hospital Id");
+
+        jLabel2.setText("Hospital Name");
+
+        txtHosName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHosNameActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Doctors Name");
+
+        txtDocName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDocNameActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Community Name");
+
+        txtCommName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCommNameActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Community Id");
+
+        txtHouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHouseActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("House");
+
+        jLabel10.setText("City Id");
+
+        txtCityId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCityIdActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("City Name");
+
+        txtCityName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCityNameActionPerformed(evt);
+            }
+        });
+
+        btnLandingPage.setLabel("Home Page");
+        btnLandingPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLandingPageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(btnViewHos)
+                                .addGap(39, 39, 39)
+                                .addComponent(btnCreateHos)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnDeleteHos)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnUpdateHos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(62, 62, 62)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel2)
+                                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel3)
+                                                .addGap(11, 11, 11)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtHosId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtDocName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtHosName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
+                                                .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(63, 63, 63)
+                                        .addComponent(jLabel10)))
+                                .addGap(104, 104, 104)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel11)
+                                                    .addComponent(jLabel6)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(4, 4, 4)
+                                                .addComponent(jLabel5)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtCommName)
+                                            .addComponent(txtHouse)
+                                            .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtCommId, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnViewHos)
+                    .addComponent(btnUpdateHos)
+                    .addComponent(btnCreateHos)
+                    .addComponent(btnDeleteHos))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCommId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHosId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtCommName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtHosName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDocName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnViewHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHosActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblHospTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblHospTable.getModel();
+        txtHosId.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        txtHosName.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        txtDocName.setText(model.getValueAt(selectedRowIndex, 2).toString());
+    }//GEN-LAST:event_btnViewHosActionPerformed
+
+    private void btnUpdateHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHosActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblHospTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
+            return;
+        }
+        DefaultTableModel modelHosp = (DefaultTableModel)tblHospTable.getModel();
+        //        DefaultTableModel modelDoc = (DefaultTableModel)tblDoctor.getModel();
+
+        for(int i=0;i<cSysMain.getHospitalDirUpdate().size();i++){
+            if(cSysMain.getHospitalDirUpdate().get(i).getHospitalId().equals(modelHosp.getValueAt(selectedRowIndex, 0).toString())){
+                if(txtHosId.getText().isEmpty()&& txtHosName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(this,"Hospital Id and Hospital Name cannot be empty");
+
+                }else{
+                    if(!txtHosId.getText().isEmpty()){
+                        cSysMain.getHospitalDirUpdate().get(i).setHospitalId(txtHosId.getText());
+                        for(Community com:cSysMain.getCommunityMasterList()){
+                            for(Hospital hosp:com.getHosp()){
+                                if(hosp.getHospitalId().equals(cSysMain.getHospitalDirUpdate().get(i).getHospitalId())){
+                                    hosp.setHospitalId(txtHosId.getText());
+                                }
+                            }
+                        }
+                        for(City c:cSysMain.getCityList()){
+                            for(Hospital hosp:c.getHospList()){
+                                if(hosp.getHospitalId().equals(cSysMain.getHospitalDirUpdate().get(i).getHospitalId())){
+                                    hosp.setHospitalId(txtHosId.getText());
+                                }
+                            }
+                        }
+                    }
+                    if(!txtHosName.getText().isEmpty()){
+
+                        cSysMain.getHospitalDirUpdate().get(i).setHospitalName(txtHosName.getText());
+                        for(Community com:cSysMain.getCommunityMasterList()){
+                            for(Hospital hosp:com.getHosp()){
+                                if(hosp.getHospitalName().equals(cSysMain.getHospitalDirUpdate().get(i).getHospitalName())){
+                                    hosp.setHospitalName(txtHosName.getText());
+                                }
+                            }
+                        }
+                        for(City c:cSysMain.getCityList()){
+                            for(Hospital hosp:c.getHospList()){
+                                if(hosp.getHospitalName().equals(cSysMain.getHospitalDirUpdate().get(i).getHospitalName())){
+                                    hosp.setHospitalName(txtHosName.getText());
+                                }
+                            }
+                        }
+                    }
+                    if(!txtDocName.getText().isEmpty()){
+
+                        for(Doctor doc:cSysMain.getDoctorList()){
+
+                            if(doc.getDoctorName().equals(cSysMain.getHospitalDirUpdate().get(i).getDoctor().getDoctorName())){
+                                doc.setDoctorName(txtDocName.getText());
+                                cSysMain.getHospitalDirUpdate().get(i).setDoctor(doc);
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+        populateHospTable(cSysMain);
+        
+    }//GEN-LAST:event_btnUpdateHosActionPerformed
+
+    private void btnCreateHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHosActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblHospTable.getSelectedRow();
+        if(txtHosId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the hospitalId");
+        }
+        else if(txtHosName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the hospitalName");
+        }
+        else if(txtDocName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Doctors Name");
+        }
+        else if(txtCommId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Community Id");
+        }
+        else if(txtCommName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Community Name");
+        }
+        else if(txtHouse.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the House Name");
+        }
+        else if(txtCityId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the City Id");
+        }
+        else if(txtCityName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the City Name");
+        }
+        else{
+            DefaultTableModel modelHosp = (DefaultTableModel)tblHospTable.getModel();
+            
+            House hNew = new House("HN1",txtHouse.getText());
+            Doctor docNew = new Doctor(txtDocName.getText(), "123", "abc");
+            Hospital hosNew = new Hospital(txtHosName.getText(),txtHosId.getText(),docNew);
+            ArrayList<House> hListNew = new ArrayList<House>();
+            ArrayList<Hospital> hosListNew = new ArrayList<Hospital>();
+            hListNew.add(hNew);
+            hosListNew.add(hosNew);
+            cSysMain.getHospitalDirUpdate().add(hosNew);
+            cSysMain.getDoctorList().add(docNew);
+            cSysMain.getAllHouses().add(hNew);
+            cSysMain.getMasterHouseListy().add(hListNew);
+            Community commNew = new Community(hListNew,txtCommName.getText(),hosListNew,txtCommId.getText());
+            cSysMain.getCommunityMasterList().add(commNew);
+            ArrayList<Community> commListNew = new ArrayList<Community>();
+            commListNew.add(commNew);
+            cSysMain.getMasterCommunityListy().add(commListNew);
+            City cityNew = new City(hosListNew,commListNew,txtCityName.getText(),txtCityId.getText());
+            cSysMain.getCityList().add(cityNew);
+            MasterDB masterNew = new MasterDB(cityNew, hosNew, docNew, commNew);
+            cSysMain.getMasterList().add(masterNew);
+
+            populateHospTable(cSysMain);
+            
+        }
+    }//GEN-LAST:event_btnCreateHosActionPerformed
+
+    private void btnDeleteHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteHosActionPerformed
+
+    private void txtHosNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHosNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHosNameActionPerformed
+
+    private void txtDocNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDocNameActionPerformed
+
+    private void txtCommNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCommNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCommNameActionPerformed
+
+    private void txtHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHouseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHouseActionPerformed
+
+    private void txtCityIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCityIdActionPerformed
+
+    private void txtCityNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCityNameActionPerformed
+
+    private void btnLandingPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingPageActionPerformed
+        // TODO add your handling code here:
+        new MainSelectionPage(cSysMain).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnLandingPageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -84,5 +487,41 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateHos;
+    private javax.swing.JButton btnDeleteHos;
+    private java.awt.Button btnLandingPage;
+    private javax.swing.JButton btnUpdateHos;
+    private javax.swing.JButton btnViewHos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblHospTable;
+    private javax.swing.JTextField txtCityId;
+    private javax.swing.JTextField txtCityName;
+    private javax.swing.JTextField txtCommId;
+    private javax.swing.JTextField txtCommName;
+    private javax.swing.JTextField txtDocName;
+    private javax.swing.JTextField txtHosId;
+    private javax.swing.JTextField txtHosName;
+    private javax.swing.JTextField txtHouse;
     // End of variables declaration//GEN-END:variables
+    
+        private void populateHospTable(ConfigureSystem cSysMain) {
+        DefaultTableModel model = (DefaultTableModel)tblHospTable.getModel();
+        model.setRowCount(0);
+
+        for(Hospital myRow:cSysMain.getHospitalDirUpdate()){
+            Object[] row = new Object[4];
+            row[0] = myRow.getHospitalId();
+            row[1] = myRow.getHospitalName();
+            row[2] = myRow.getDoctor().getDoctorName();
+            model.addRow(row);
+        }
+    }
 }
