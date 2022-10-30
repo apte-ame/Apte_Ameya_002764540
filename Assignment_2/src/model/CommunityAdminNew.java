@@ -8,11 +8,11 @@ package model;
  *
  * @author AMEYA A
  */
-public class CommunityAdmin{
+public class CommunityAdminNew {
     String communityUserId;
     String communityPassword;
 
-    public CommunityAdmin(String communityUserId, String communityPassword) {
+    public CommunityAdminNew(String communityUserId, String communityPassword) {
         this.communityUserId = communityUserId;
         this.communityPassword = communityPassword;
     }

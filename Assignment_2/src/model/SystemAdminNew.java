@@ -8,11 +8,11 @@ package model;
  *
  * @author AMEYA A
  */
-public class SystemAdmin{
+public class SystemAdminNew {
     private String userId;
     private String password;
 
-    public SystemAdmin(String userId, String password) {
+    public SystemAdminNew(String userId, String password) {
         this.userId = userId;
         this.password = password;
     }

@@ -27,9 +27,9 @@ public class ConfigureSystem {
     ArrayList<MasterDB> masterList;
     ArrayList<Encounter> encList,encHList;
     EncounterHistory encH;
-//    CommunityAdmin comAd;
-//    SystemAdmin sysAd;
-//    HospitalAdmin hospAd;
+    CommunityAdminNew comAd;
+    SystemAdminNew sysAd;
+    HospitalAdminNew hospAd;
     ArrayList<Patient> patList;
     ArrayList<City> cityList;
     CityDirectory cityDir;
@@ -98,29 +98,29 @@ public class ConfigureSystem {
         this.encH = encH;
     }
 
-//    public CommunityAdmin getComAd() {
-//        return comAd;
-//    }
-//
-//    public void setComAd(CommunityAdmin comAd) {
-//        this.comAd = comAd;
-//    }
+    public CommunityAdminNew getComAd() {
+        return comAd;
+    }
 
-//    public SystemAdmin getSysAd() {
-//        return sysAd;
-//    }
-//
-//    public void setSysAd(SystemAdmin sysAd) {
-//        this.sysAd = sysAd;
-//    }
+    public void setComAd(CommunityAdminNew comAd) {
+        this.comAd = comAd;
+    }
 
-//    public HospitalAdmin getHospAd() {
-//        return hospAd;
-//    }
-//
-//    public void setHospAd(HospitalAdmin hospAd) {
-//        this.hospAd = hospAd;
-//    }
+    public SystemAdminNew getSysAd() {
+        return sysAd;
+    }
+
+    public void setSysAd(SystemAdminNew sysAd) {
+        this.sysAd = sysAd;
+    }
+
+    public HospitalAdminNew getHospAd() {
+        return hospAd;
+    }
+
+    public void setHospAd(HospitalAdminNew hospAd) {
+        this.hospAd = hospAd;
+    }
 
     public ArrayList<Patient> getPatList() {
         return patList;
@@ -838,10 +838,10 @@ public class ConfigureSystem {
         encH = new EncounterHistory(encHList);
         encList = new ArrayList<Encounter>();
         
-//        sysAd = new SystemAdmin("123", "abc");
-//        comAd = new CommunityAdmin("123","abc");
-//        hospAd = new HospitalAdmin("123", "abc");
-//        
+        sysAd = new SystemAdminNew("123", "abc");
+        comAd = new CommunityAdminNew("123","abc");
+        hospAd = new HospitalAdminNew("123", "abc");
+      
     }
     
     public boolean verifyPatientCred(ArrayList<Patient> pat,String username,String password){
@@ -874,47 +874,47 @@ public class ConfigureSystem {
         return flag;
     }
     
-//    public boolean verifySysAdCred(SystemAdmin sysAd,String username,String password){
-//        boolean flag = false;
-//        
-//        if ((sysAd.getUserId().equals(username)) && (sysAd.getPassword().equals(password))){
-//                flag = true;           
-//            }
-//        else{
-//                flag = false;                
-//        }
-//        
-//        return flag;
-//    }
-//     
-//    public boolean verifyComCred(CommunityAdmin comAd,String username,String password){
-//        boolean flag = false;
-//        
-//            if ((comAd.getCommunityUserId().equals(username)) && (comAd.getCommunityPassword().equals(password))){
-//                flag = true;           
-//            }
-//            else{
-//                flag = false;                
-//            }
-//        
-//        return flag;
-//    }
-//        
-//        
-//    public boolean verifyHospCred(HospitalAdmin hosAd,String username,String password){
-//        boolean flag = false;
-//        
-//        
-//            
-//            if ((hosAd.getHospitalUserId().equals(username)) && (hosAd.getHospitalPassword().equals(password))){
-//                flag = true;           
-//            }
-//            else{
-//                flag = false;                
-//            }
-//        
-//        return flag;
-//    }
-//        
+    public boolean verifySysAdCred(SystemAdminNew sysAd,String username,String password){
+        boolean flag = false;
+        
+        if ((sysAd.getUserId().equals(username)) && (sysAd.getPassword().equals(password))){
+                flag = true;           
+            }
+        else{
+                flag = false;                
+        }
+        
+        return flag;
+    }
+ 
+    public boolean verifyComCred(CommunityAdminNew comAd,String username,String password){
+        boolean flag = false;
+        
+            if ((comAd.getCommunityUserId().equals(username)) && (comAd.getCommunityPassword().equals(password))){
+                flag = true;           
+            }
+            else{
+                flag = false;                
+            }
+        
+        return flag;
+    }
+        
+        
+    public boolean verifyHospCred(HospitalAdminNew hosAd,String username,String password){
+        boolean flag = false;
+        
+        
+            
+            if ((hosAd.getHospitalUserId().equals(username)) && (hosAd.getHospitalPassword().equals(password))){
+                flag = true;           
+            }
+            else{
+                flag = false;                
+            }
+        
+        return flag;
+    }
+        
     
 }

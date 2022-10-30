@@ -147,14 +147,14 @@ public class SystemAdminLogin extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
-//        Boolean check = cSysMain.verifySysAdCred(cSysMain.getSysAd(),txtUserName.getText(), new String(jPassField.getPassword()));
-//        if(check.equals(true)){
-//            new PatientAppointmentBooking(cSysMain).setVisible(true);
-//            this.setVisible(false);
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(this,"Incorrect Credentials");
-//        }
+        Boolean check = cSysMain.verifySysAdCred(cSysMain.getSysAd(),txtUserName.getText(), new String(jPassField.getPassword()));
+        if(check.equals(true)){
+            new SystemAdminDashboard(cSysMain).setVisible(true);
+            this.setVisible(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Incorrect Credentials");
+        }
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed

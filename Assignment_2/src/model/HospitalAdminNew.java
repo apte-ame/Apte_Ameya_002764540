@@ -8,11 +8,11 @@ package model;
  *
  * @author AMEYA A
  */
-public class HospitalAdmin{
+public class HospitalAdminNew {
     String hospitalUserId;
     String hospitalPassword;
 
-    public HospitalAdmin(String hospitalUserId, String hospitalPassword) {
+    public HospitalAdminNew(String hospitalUserId, String hospitalPassword) {
         this.hospitalUserId = hospitalUserId;
         this.hospitalPassword = hospitalPassword;
     }
