@@ -26,6 +26,12 @@ public class Doctor extends Person{
         
         
     }
+
+    public Doctor(String doctorName, String doctorUserId, String doctorPassword) {
+        this.doctorName = doctorName;
+        this.doctorUserId = doctorUserId;
+        this.doctorPassword = doctorPassword;
+    }
     public Doctor(){
     
     }

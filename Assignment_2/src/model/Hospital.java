@@ -20,7 +20,7 @@ public class Hospital {
         this.hospitalId = hospitalId;
         this.doctor = doctor;
     }
-
+    
     public String getHospitalName() {
         return hospitalName;
     }
