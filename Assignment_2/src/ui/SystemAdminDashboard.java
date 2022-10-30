@@ -663,8 +663,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         
         for(int i=0;i<cSysMain.getHospitalDirUpdate().size();i++){
             if(cSysMain.getHospitalDirUpdate().get(i).getHospitalId().equals(modelHosp.getValueAt(selectedRowIndex, 0).toString())){
-               if(txtHosId.getText().isEmpty()&& txtHosName.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Hospital Id and Hospital Name cannot be empty");
+               if(txtHosId.getText().isEmpty()&& txtHosName.getText().isEmpty() && txtDocName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"All fields cannot be empty");
            
         }else{
         if(!txtHosId.getText().isEmpty()){
@@ -788,14 +788,163 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void btnViewComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewComActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblCommunity.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblCommunity.getModel();
+        txtCommId.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        txtCommName.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        txtHouse.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        txtHosName.setText(model.getValueAt(selectedRowIndex, 3).toString());
     }//GEN-LAST:event_btnViewComActionPerformed
 
     private void btnUpdateCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCommActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblCommunity.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
+            return;
+        }
+        DefaultTableModel modelHosp = (DefaultTableModel)tblCommunity.getModel();
+//        DefaultTableModel modelDoc = (DefaultTableModel)tblDoctor.getModel();
+        
+        for(int i=0;i<cSysMain.getCommunityMasterList().size();i++){
+            if(cSysMain.getCommunityMasterList().get(i).getCommunityId().equals(modelHosp.getValueAt(selectedRowIndex, 0).toString())){
+               if(txtCommId.getText().isEmpty()&& txtCommName.getText().isEmpty() && txtHouse.getText().isEmpty() && txtHosName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"All fields cannot be empty");
+           
+        }else{
+        if(!txtCommId.getText().isEmpty()){
+            cSysMain.getCommunityMasterList().get(i).setCommunityId(txtCommId.getText());
+            
+            for(City c:cSysMain.getCityList()){
+                for(Community comm:c.getCommList()){
+                    if(comm.getCommunityId().equals(cSysMain.getCommunityMasterList().get(i).getCommunityId())){
+                        comm.setCommunityId(txtCommId.getText());
+                    }
+                }
+            }
+        }
+        if(!txtCommName.getText().isEmpty()){           
+
+            cSysMain.getCommunityMasterList().get(i).setCommunityName(txtCommName.getText());
+           
+            for(City c:cSysMain.getCityList()){
+                for(Community comm:c.getCommList()){
+                    if(comm.getCommunityName().equals(cSysMain.getCommunityMasterList().get(i).getCommunityName())){
+                        comm.setCommunityName(txtCommName.getText());
+                    }
+                }
+            }
+        }
+        if(!txtHouse.getText().isEmpty()){
+            
+            for(House house:cSysMain.getAllHouses()){
+                for(House h:cSysMain.getCommunityMasterList().get(i).getHouseList()){
+                    if(house.getHouseName().equals(h.getHouseName())){
+                        house.setHouseName(txtHouse.getText());
+                        h.setHouseName(txtHouse.getText());
+                    }
+                }
+                
+            }
+            
+            
+        }
+        
+        if(!txtHosName.getText().isEmpty()){           
+
+            
+            for(Hospital h:cSysMain.getHospitalDirUpdate()){
+               for(Hospital hComm:cSysMain.getCommunityMasterList().get(i).getHosp()){
+                        if(h.getHospitalName().equals(hComm.getHospitalName())){
+                            h.setHospitalName(txtHosName.getText());
+                   
+                        
+                    }
+                    }
+            }
+            for(City c:cSysMain.getCityList()){
+                for(Hospital hosp:c.getHospList()){
+                    for(Hospital h:cSysMain.getCommunityMasterList().get(i).getHosp()){
+                        if(hosp.getHospitalName().equals(h.getHospitalName())){
+                            hosp.setHospitalName(txtHosName.getText());
+                            h.setHospitalName(txtHosName.getText());
+                        
+                    }
+                    }
+                }
+            }
+        }
+        
+        } 
+      }
+        }
+        populateHospTable(cSysMain);
+        populateCityTable(cSysMain);
+        populateCommTable(cSysMain);
+        populateDoctorTable(cSysMain);
+        
     }//GEN-LAST:event_btnUpdateCommActionPerformed
 
     private void btnCreateCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCommActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblHospTable.getSelectedRow();
+        if(txtHosId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the hospitalId");   
+        }
+        else if(txtHosName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the hospitalName");   
+        }
+        else if(txtDocName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Doctors Name");   
+        }
+        else if(txtCommId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Community Id");
+        }
+        else if(txtCommName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Community Name");
+        }
+        else if(txtHouse.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the House Name");
+        }
+        else if(txtCityId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the City Id");
+        }
+        else if(txtCityName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the City Name");
+        }
+        else{
+        DefaultTableModel modelHosp = (DefaultTableModel)tblHospTable.getModel();
+        DefaultTableModel modelDoc = (DefaultTableModel)tblDoctor.getModel();
+        House hNew = new House("HN1",txtHouse.getText());
+        Doctor docNew = new Doctor(txtDocName.getText(), "123", "abc");
+        Hospital hosNew = new Hospital(txtHosName.getText(),txtHosId.getText(),docNew);
+        ArrayList<House> hListNew = new ArrayList<House>();
+        ArrayList<Hospital> hosListNew = new ArrayList<Hospital>();
+        hListNew.add(hNew);
+        hosListNew.add(hosNew);
+        cSysMain.getHospitalDirUpdate().add(hosNew);
+        cSysMain.getDoctorList().add(docNew);
+        cSysMain.getAllHouses().add(hNew);
+        cSysMain.getMasterHouseListy().add(hListNew);
+        Community commNew = new Community(hListNew,txtCommName.getText(),hosListNew,txtCommId.getText());
+        cSysMain.getCommunityMasterList().add(commNew);
+        ArrayList<Community> commListNew = new ArrayList<Community>();
+        commListNew.add(commNew);
+        cSysMain.getMasterCommunityListy().add(commListNew);
+        City cityNew = new City(hosListNew,commListNew,txtCityName.getText(),txtCityId.getText());
+        cSysMain.getCityList().add(cityNew);
+        MasterDB masterNew = new MasterDB(cityNew, hosNew, docNew, commNew);
+        cSysMain.getMasterList().add(masterNew);
+        
+        populateHospTable(cSysMain);
+        populateDoctorTable(cSysMain);
+        populateCityTable(cSysMain);
+        populateCommTable(cSysMain);
+        } 
     }//GEN-LAST:event_btnCreateCommActionPerformed
 
     private void btnDeleteComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteComActionPerformed
