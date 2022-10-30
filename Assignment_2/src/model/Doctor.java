@@ -26,6 +26,9 @@ public class Doctor extends Person{
         
         
     }
+    public Doctor(){
+    
+    }
 
     public String getDoctorName() {
         return doctorName;

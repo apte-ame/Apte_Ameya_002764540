@@ -19,9 +19,11 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
      * Creates new form PatientAppointmentBooking
      */
     ConfigureSystem cSysMain;
-    public PatientAppointmentBooking(ConfigureSystem cSysMain) {
+    Patient pat;
+    public PatientAppointmentBooking(ConfigureSystem cSysMain,Patient pat) {
         initComponents();
         this.cSysMain = cSysMain;
+        this.pat =pat;
         myInitComponents(this.cSysMain);
     }
     
@@ -189,7 +191,8 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         lblBookAppmt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBookAppmt.setText("Book an appointment");
 
-        btnLandingPage.setLabel("Landing Page");
+        btnLandingPage.setActionCommand("Home Page");
+        btnLandingPage.setLabel("Home Page");
         btnLandingPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLandingPageActionPerformed(evt);
@@ -219,7 +222,6 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -346,7 +348,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
 
     private void btnLandingPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingPageActionPerformed
         // TODO add your handling code here:
-        new MainJFrame().setVisible(true);
+        new MainSelectionPage(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLandingPageActionPerformed
 
@@ -403,8 +405,21 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
 
     private void btnBookAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppActionPerformed
         // TODO add your handling code here:
+        
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now(); 
+        LocalDateTime now = LocalDateTime.now();
+        now = now.plusDays(3);
+        Encounter enc;
+        for(Doctor d:cSysMain.getDoctorList()){
+            if(d.getDoctorName().equals(tblDetails.getModel().getValueAt(tblDetails.getSelectedRow(), 0).toString())){
+                enc = new Encounter(now.toString(),"E3",d,pat);
+                cSysMain.getEncList().add(enc);
+            }
+        }
+        
+
+        
+        
         System.out.println(now.toString());
     }//GEN-LAST:event_btnBookAppActionPerformed
 

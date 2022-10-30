@@ -151,8 +151,13 @@ public class PatientLogin extends javax.swing.JFrame {
      
         Boolean check = cSysMain.verifyPatientCred(cSysMain.getPatList(),txtUserName.getText(), new String(jPassField.getPassword()));
         if(check.equals(true)){
-            new PatientAppointmentBooking(cSysMain).setVisible(true);
-            this.setVisible(false);
+            for(Patient pat:cSysMain.getPatList()){
+                if(pat.getPatientUserId().equals(txtUserName.getText())){
+                    new PatientAppointmentBooking(cSysMain,pat).setVisible(true);
+                    this.setVisible(false);
+                }
+            }
+            
         }
         else{
             JOptionPane.showMessageDialog(this,"Incorrect Credentials");

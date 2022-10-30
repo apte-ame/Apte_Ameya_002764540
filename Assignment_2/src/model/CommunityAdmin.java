@@ -8,7 +8,7 @@ package model;
  *
  * @author AMEYA A
  */
-public class CommunityAdmin extends Person{
+public class CommunityAdmin{
     String communityUserId;
     String communityPassword;
 

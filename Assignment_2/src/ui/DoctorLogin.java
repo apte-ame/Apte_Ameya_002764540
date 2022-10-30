@@ -149,7 +149,7 @@ public class DoctorLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     Boolean check = cSysMain.verifyDoctorCred(cSysMain.getDoctorList(),txtUserName.getText(), new String(jPassField.getPassword()));
         if(check.equals(true)){
-            new PatientAppointmentBooking(cSysMain).setVisible(true);
+            new DoctorDashboard(cSysMain).setVisible(true);
             this.setVisible(false);
         }
         else{

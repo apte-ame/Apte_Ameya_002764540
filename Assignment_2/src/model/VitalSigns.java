@@ -16,5 +16,21 @@ public class VitalSigns {
         this.vitalSignsId = vitalSignsId;
         this.vitalSign = vitalSign;
     }
+
+    public String getVitalSignsId() {
+        return vitalSignsId;
+    }
+
+    public void setVitalSignsId(String vitalSignsId) {
+        this.vitalSignsId = vitalSignsId;
+    }
+
+    public String getVitalSign() {
+        return vitalSign;
+    }
+
+    public void setVitalSign(String vitalSign) {
+        this.vitalSign = vitalSign;
+    }
     
 }

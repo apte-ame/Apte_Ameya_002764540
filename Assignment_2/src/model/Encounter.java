@@ -22,6 +22,7 @@ public class Encounter {
         this.p = p;
     }
 
+    
     public String getDate() {
         return date;
     }

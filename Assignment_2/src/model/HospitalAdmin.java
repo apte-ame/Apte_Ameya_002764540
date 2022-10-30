@@ -8,7 +8,7 @@ package model;
  *
  * @author AMEYA A
  */
-public class HospitalAdmin extends Person{
+public class HospitalAdmin{
     String hospitalUserId;
     String hospitalPassword;
 
