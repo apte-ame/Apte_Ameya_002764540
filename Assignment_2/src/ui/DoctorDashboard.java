@@ -153,15 +153,28 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         
         
-        
-        for(Encounter en:cSysMain.getEncList()){
-            if(en.getDate().equals(tblCurrAppt.getModel().getValueAt(tblCurrAppt.getSelectedRow(), 0).toString())){
-                cSysMain.getEncHList().add(en);
-                cSysMain.getEncList().remove(en);
-                System.out.println(en.getDate());
-            }
+        for(int i=0;i<cSysMain.getEncList().size();i++){
+           if(cSysMain.getEncList().get(i).getDate().equals(tblCurrAppt.getModel().getValueAt(tblCurrAppt.getSelectedRow(), 0).toString())){
+               cSysMain.getEncHList().add(cSysMain.getEncList().get(i));
+               cSysMain.getEncList().remove(cSysMain.getEncList().get(i));
+           }
         }
+//        for(Encounter en:cSysMain.getEncList()){
+//            if(en.getDate().equals(tblCurrAppt.getModel().getValueAt(tblCurrAppt.getSelectedRow(), 0).toString())){
+//                cSysMain.getEncHList().add(en);
+//                
+//                System.out.println(en.getDate());
+//            }
+//        }
+//        for(Encounter en:cSysMain.getEncList()){
+//            if(en.getDate().equals(tblCurrAppt.getModel().getValueAt(tblCurrAppt.getSelectedRow(), 0).toString())){
+//                
+//                cSysMain.getEncList().remove(en);
+//                System.out.println(en.getDate());
+//            }
+//        }
         populatePastApptTable(cSysMain);
+        populateCurrentApptTable(cSysMain);
        
     }//GEN-LAST:event_btnBookAppActionPerformed
 
