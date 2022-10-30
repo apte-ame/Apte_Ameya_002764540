@@ -4,7 +4,14 @@
  */
 package ui;
 
+import javax.swing.table.DefaultTableModel;
+import model.City;
+import model.Community;
 import model.ConfigureSystem;
+import model.Doctor;
+import model.Encounter;
+import model.Hospital;
+import model.Patient;
 
 /**
  *
@@ -19,6 +26,11 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     public SystemAdminDashboard(ConfigureSystem cSysMain) {
         initComponents();
         this.cSysMain = cSysMain;
+        populateHospTable(cSysMain);
+        populateCommTable(cSysMain);
+        populateDoctorTable(cSysMain);
+        populatePatientTable(cSysMain);
+        populateCityTable(cSysMain);
     }
     public SystemAdminDashboard() {
         initComponents();
@@ -32,17 +44,118 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblHospTable = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblCommunity = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblDoctor = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblPatients = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblCity = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tblHospTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Hospital Id", "Hospital Name", "Doctor Name"
+            }
+        ));
+        jScrollPane1.setViewportView(tblHospTable);
+
+        tblCommunity.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Community Id", "Community Name", "House", "Hospital Name"
+            }
+        ));
+        jScrollPane2.setViewportView(tblCommunity);
+
+        tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Doctors"
+            }
+        ));
+        jScrollPane3.setViewportView(tblDoctor);
+
+        tblPatients.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Patient Name", "Blood Group", "Vital Sign"
+            }
+        ));
+        jScrollPane4.setViewportView(tblPatients);
+
+        tblCity.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "City Id", "City Name", "Community Name", "Hospital Name"
+            }
+        ));
+        jScrollPane5.setViewportView(tblCity);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                        .addGap(123, 123, 123))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(321, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,5 +197,82 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable tblCity;
+    private javax.swing.JTable tblCommunity;
+    private javax.swing.JTable tblDoctor;
+    private javax.swing.JTable tblHospTable;
+    private javax.swing.JTable tblPatients;
     // End of variables declaration//GEN-END:variables
+    
+    private void populateHospTable(ConfigureSystem cSysMain) {
+        DefaultTableModel model = (DefaultTableModel)tblHospTable.getModel();
+        model.setRowCount(0);
+
+        for(Hospital myRow:cSysMain.getHospitalDirUpdate()){
+            Object[] row = new Object[4];
+            row[0] = myRow.getHospitalId();
+            row[1] = myRow.getHospitalName();
+            row[2] = myRow.getDoctor().getDoctorName();
+            model.addRow(row);
+        }
+    }
+    
+    private void populateCommTable(ConfigureSystem cSysMain) {
+        DefaultTableModel model = (DefaultTableModel)tblCommunity.getModel();
+        model.setRowCount(0);
+
+        for(Community myRow:cSysMain.getCommunityMasterList()){
+            Object[] row = new Object[4];
+            row[0] = myRow.getCommunityId();
+            row[1] = myRow.getCommunityName();
+            row[2] = myRow.getHouseList().get(0).getHouseName();
+            row[3] = myRow.getHosp().get(0).getHospitalName();
+            model.addRow(row);
+        }
+    }
+    
+    private void populateDoctorTable(ConfigureSystem cSysMain) {
+        DefaultTableModel model = (DefaultTableModel)tblDoctor.getModel();
+        model.setRowCount(0);
+
+        for(Doctor myRow:cSysMain.getDoctorList()){
+            Object[] row = new Object[4];
+            row[0] = myRow.getDoctorName();
+        
+            model.addRow(row);
+        }
+    }
+    
+    private void populatePatientTable(ConfigureSystem cSysMain) {
+        DefaultTableModel model = (DefaultTableModel)tblPatients.getModel();
+        model.setRowCount(0);
+
+        for(Patient myRow:cSysMain.getPatList()){
+            Object[] row = new Object[4];
+            row[0] = myRow.getPatientName();
+            row[1] = myRow.getBloodGroup();
+            row[2] = myRow.getVitalSign().getVitalSign();
+        
+            model.addRow(row);
+        }
+    }
+    
+        private void populateCityTable(ConfigureSystem cSysMain) {
+        DefaultTableModel model = (DefaultTableModel)tblCity.getModel();
+        model.setRowCount(0);
+
+        for(City myRow:cSysMain.getCityList()){
+            Object[] row = new Object[4];
+            row[0] = myRow.getCityId();
+            row[1] = myRow.getCityName();
+            row[2] = myRow.getCommList().get(0).getCommunityName();
+            row[3] = myRow.getHospList().get(0).getHospitalName();
+            model.addRow(row);
+        }
+    }
 }

@@ -239,7 +239,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
     }
     
     private void populateCurrentApptTable(ConfigureSystem cSysMain) {
-         DefaultTableModel model = (DefaultTableModel)tblCurrAppt.getModel();
+        DefaultTableModel model = (DefaultTableModel)tblCurrAppt.getModel();
         model.setRowCount(0);
 
         for(Encounter myRow:cSysMain.getEncList()){

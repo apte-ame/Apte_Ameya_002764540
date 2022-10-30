@@ -806,6 +806,7 @@ public class ConfigureSystem {
         cityList.add(cy1);
         cityList.add(cy2);
         cityList.add(cy3);
+        cityList.add(cy4);
         cityDir = new CityDirectory(cityList);
         
         masterRow1 = new MasterDB(cy1,hp1,d1,c1);
