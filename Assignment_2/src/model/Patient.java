@@ -22,7 +22,9 @@ public class Patient extends Person{
         bloodGroup = p.getBloodGroup();
         this.vitalSign = vitalSign;
     }
-
+    public Patient(){
+    
+    }
     public String getPatientUserId() {
         return patientUserId;
     }

@@ -33,7 +33,7 @@
                       <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
                       <Component id="lblBookAppmt" min="-2" pref="213" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnLandingPage" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnHomePage" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblBookAppmt" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnLandingPage" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnHomePage" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="52" max="32767" attributes="0"/>
                           </Group>
@@ -207,13 +207,13 @@
         <Property name="text" type="java.lang.String" value="Book an appointment"/>
       </Properties>
     </Component>
-    <Component class="java.awt.Button" name="btnLandingPage">
+    <Component class="java.awt.Button" name="btnHomePage">
       <Properties>
         <Property name="actionCommand" type="java.lang.String" value="Home Page"/>
         <Property name="label" type="java.lang.String" value="Home Page"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLandingPageActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHomePageActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblName1">

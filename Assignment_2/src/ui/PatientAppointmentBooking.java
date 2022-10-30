@@ -137,7 +137,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         lblCommunity = new javax.swing.JLabel();
         cmbBoxCity = new javax.swing.JComboBox<>();
         lblBookAppmt = new javax.swing.JLabel();
-        btnLandingPage = new java.awt.Button();
+        btnHomePage = new java.awt.Button();
         lblName1 = new javax.swing.JLabel();
         cmbBoxCommunity = new javax.swing.JComboBox<>();
         cmbBoxHospital = new javax.swing.JComboBox<>();
@@ -191,11 +191,11 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         lblBookAppmt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBookAppmt.setText("Book an appointment");
 
-        btnLandingPage.setActionCommand("Home Page");
-        btnLandingPage.setLabel("Home Page");
-        btnLandingPage.addActionListener(new java.awt.event.ActionListener() {
+        btnHomePage.setActionCommand("Home Page");
+        btnHomePage.setLabel("Home Page");
+        btnHomePage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLandingPageActionPerformed(evt);
+                btnHomePageActionPerformed(evt);
             }
         });
 
@@ -250,7 +250,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
                         .addGap(277, 277, 277)
                         .addComponent(lblBookAppmt, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnHomePage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,7 +296,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
                                 .addGap(16, 16, 16)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblBookAppmt)
-                                    .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnHomePage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)))
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -346,11 +346,11 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cmbBoxCityActionPerformed
 
-    private void btnLandingPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingPageActionPerformed
+    private void btnHomePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomePageActionPerformed
         // TODO add your handling code here:
         new MainSelectionPage(cSysMain).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnLandingPageActionPerformed
+    }//GEN-LAST:event_btnHomePageActionPerformed
 
     private void cmbBoxCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxCommunityActionPerformed
         // TODO add your handling code here:
@@ -463,7 +463,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBookApp;
-    private java.awt.Button btnLandingPage;
+    private java.awt.Button btnHomePage;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cmbBoxCity;
     private javax.swing.JComboBox<String> cmbBoxCommunity;
