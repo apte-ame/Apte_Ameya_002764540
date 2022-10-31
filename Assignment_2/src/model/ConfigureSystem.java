@@ -866,8 +866,8 @@ public class ConfigureSystem {
         patList.add(pat6);
         patDir = new PatientDirectory(patList);
                 
-        ench1 = new Encounter("2021-11-22T16:44:58.643067","E1",d1,pat1);
-        ench2 = new Encounter("2021-12-23T11:43:58.643067","E2",d2,pat2); 
+        ench1 = new Encounter("2021-11-22T16:44:58.643067","E1",d1,pat1,"08/28/2022 9am");
+        ench2 = new Encounter("2021-12-23T11:43:58.643067","E2",d2,pat2,"10/14/2022 9am"); 
         encHList = new ArrayList<Encounter>();
         encHList.add(ench1);
         encHList.add(ench2);

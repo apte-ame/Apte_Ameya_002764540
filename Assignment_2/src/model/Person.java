@@ -16,12 +16,14 @@ public class Person {
     private String houseId;
     private String personPassword;
     private String bloodGroup;
+    private String mobNumber;
+    private String email;
    
     public Person() {
     }
 
     
-    public Person(String personName, String personUserId, int personAge, String personGender, String houseId, String personPassword, String bloodGroup) {
+    public Person(String personName, String personUserId, int personAge, String personGender, String houseId, String personPassword, String bloodGroup,String mobNumber,String email) {
         this.personName = personName;
         this.personUserId = personUserId;
         this.personAge = personAge;
@@ -29,6 +31,24 @@ public class Person {
         this.houseId = houseId;
         this.personPassword = personPassword;
         this.bloodGroup = bloodGroup;
+        this.mobNumber = mobNumber;
+        this.email = email;
+    }
+
+    public String getMobNumber() {
+        return mobNumber;
+    }
+
+    public void setMobNumber(String mobNumber) {
+        this.mobNumber = mobNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 

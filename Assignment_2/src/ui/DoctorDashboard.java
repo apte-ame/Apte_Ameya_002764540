@@ -63,26 +63,26 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
         tblCurrAppt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Date", "EncounterId", "Patient", "VitalSign"
+                "Timestamp", "EncounterId", "Patient", "VitalSign", "Schedule Time"
             }
         ));
         jScrollPane1.setViewportView(tblCurrAppt);
 
         tblPastAppt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Date", "EncounterId", "Patient", "VitalSign"
+                "Timestamp", "EncounterId", "Patient", "VitalSign", "Schedule Time"
             }
         ));
         jScrollPane2.setViewportView(tblPastAppt);
@@ -383,11 +383,12 @@ public class DoctorDashboard extends javax.swing.JFrame {
         model.setRowCount(0);
 
         for(Encounter myRow:cSysMain.getEncHList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = myRow.getDate();
             row[1] = myRow.getEncounterId();
             row[2] = myRow.getP().getPatientName();
             row[3] = myRow.getP().getVitalSign().getVitalSign();
+            row[4] = myRow.getTimeSlot();
             model.addRow(row);
         }
     }
@@ -397,11 +398,12 @@ public class DoctorDashboard extends javax.swing.JFrame {
         model.setRowCount(0);
 
         for(Encounter myRow:cSysMain.getEncList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = myRow.getDate();
             row[1] = myRow.getEncounterId();
             row[2] = myRow.getP().getPatientName();
             row[3] = myRow.getP().getVitalSign().getVitalSign();
+            row[4] = myRow.getTimeSlot();
             model.addRow(row);
         }
     }

@@ -14,12 +14,22 @@ public class Encounter {
     private String encounterId;
     private Doctor d;
     private Patient p;
+    private String timeSlot;
 
-    public Encounter(String date, String encounterId, Doctor d, Patient p) {
+    public Encounter(String date, String encounterId, Doctor d, Patient p, String timeSlot) {
         this.date = date;
         this.encounterId = encounterId;
         this.d = d;
         this.p = p;
+        this.timeSlot = timeSlot;
+    }
+
+    public String getTimeSlot() {
+        return timeSlot;
+    }
+
+    public void setTimeSlot(String timeSlot) {
+        this.timeSlot = timeSlot;
     }
 
     
