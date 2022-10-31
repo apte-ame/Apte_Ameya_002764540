@@ -743,7 +743,6 @@ public class ConfigureSystem {
         pat4 = new Patient(p.get(7),vs3);
         pat5 = new Patient(p.get(8),vs2);
         pat6 = new Patient(p.get(9),vs1);
-                
         h1 = new House("H1","house1");
         h2 = new House("H2","house2");
         h3 = new House("H3","house3");
@@ -912,14 +911,14 @@ public class ConfigureSystem {
     public boolean verifyPatientCred(ArrayList<Patient> pat,String username,String password){
         boolean flag = false;
         
-        for(Patient p:pat){
+        for(Patient p1:pat){
             
-            if ((p.getPatientUserId().equals(username)) && (p.getPatientPassword().equals(password))){
-                flag = true;           
+                    
+            if ((p1.getPatientUserId().concat(p1.getPatientPassword())).equals(username.concat(password))){
+                flag = true;    
+                break;
             }
-            else{
-                flag = false;                
-            }
+            
         }
         return flag;
     }
@@ -929,38 +928,33 @@ public class ConfigureSystem {
         
         for(Doctor d:doc){
             
-            if ((d.getDoctorUserId().equals(username)) && (d.getDoctorPassword().equals(password))){
-                flag = true;           
+         
+            if((d.getDoctorUserId().concat(d.getDoctorPassword())).equals(username.concat(password))){
+                flag = true;   
+                break;
             }
-            else{
-                flag = false;                
-            }
+           
         }
         return flag;
     }
     
     public boolean verifySysAdCred(SystemAdminNew sysAd,String username,String password){
         boolean flag = false;
-        
-        if ((sysAd.getUserId().equals(username)) && (sysAd.getPassword().equals(password))){
-                flag = true;           
-            }
-        else{
-                flag = false;                
+        if((sysAd.getUserId().concat(sysAd.getPassword())).equals(username.concat(password)))
+        {
+                flag = true;      
+                
         }
-        
         return flag;
     }
  
     public boolean verifyComCred(CommunityAdminNew comAd,String username,String password){
         boolean flag = false;
         
-            if ((comAd.getCommunityUserId().equals(username)) && (comAd.getCommunityPassword().equals(password))){
+            if ((comAd.getCommunityUserId().concat(comAd.getCommunityPassword())).equals(username.concat(password))){
                 flag = true;           
             }
-            else{
-                flag = false;                
-            }
+            
         
         return flag;
     }
@@ -971,12 +965,10 @@ public class ConfigureSystem {
         
         
             
-            if ((hosAd.getHospitalUserId().equals(username)) && (hosAd.getHospitalPassword().equals(password))){
+            if ((hosAd.getHospitalUserId().concat(hosAd.getHospitalPassword())).equals(username.concat(password))){
                 flag = true;           
             }
-            else{
-                flag = false;                
-            }
+           
         
         return flag;
     }

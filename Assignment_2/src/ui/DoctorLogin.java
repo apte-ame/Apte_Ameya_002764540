@@ -147,8 +147,10 @@ public class DoctorLogin extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
+    
     Boolean check = cSysMain.verifyDoctorCred(cSysMain.getDoctorList(),txtUserName.getText(), new String(jPassField.getPassword()));
-        if(check.equals(true)){
+    
+    if(check.equals(true)){
             new DoctorDashboard(cSysMain).setVisible(true);
             this.setVisible(false);
         }

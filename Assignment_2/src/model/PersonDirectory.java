@@ -18,16 +18,16 @@ public class PersonDirectory {
     }
     
     public ArrayList<Person> createPersonDir(){
-        Person p1 = new Person("Jim","1234",30,"M","H1","abcd","A+");
-        Person p2 = new Person("Marcus","123",23,"M","H2","abcd","B+");
-        Person p3 = new Person("Tom","123",56,"M","H3","abcd","A-");
-        Person p4 = new Person("Jerry","123",37,"F","H4","abcd","O+");
-        Person p5 = new Person("Andy","123",60,"M","H5","abcd","A+");
-        Person p6 = new Person("John","123",28,"M","H6","abcd","B+");
-        Person p7 = new Person("Mary","123",46,"F","H7","abcd","O-");
-        Person p8 = new Person("Jenny","123",41,"F","H8","abcd","A+");
-        Person p9 = new Person("May","123",26,"F","H9","abcd","A-");
-        Person p10 = new Person("Harry","123",52,"M","H10","abcd","B+");
+        Person p1 = new Person("Jim","123",30,"M","H1","abcd","A+");
+        Person p2 = new Person("Marcus","456",23,"M","H2","bbbb","B+");
+        Person p3 = new Person("Tom","789",56,"M","H3","cccc","A-");
+        Person p4 = new Person("Jerry","000",37,"F","H4","dddd","O+");
+        Person p5 = new Person("Andy","111",60,"M","H5","eeee","A+");
+        Person p6 = new Person("John","222",28,"M","H6","ffff","B+");
+        Person p7 = new Person("Mary","333",46,"F","H7","gggg","O-");
+        Person p8 = new Person("Jenny","444",41,"F","H8","hhhh","A+");
+        Person p9 = new Person("May","555",26,"F","H9","aaaa","A-");
+        Person p10 = new Person("Harry","666",52,"M","H10","efgh","B+");
         
         
         personDir.add(p1);

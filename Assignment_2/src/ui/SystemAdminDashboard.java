@@ -794,6 +794,37 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void btnDeleteHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHosActionPerformed
         // TODO add your handling code here:
+        
+        int selectedRowIndex = tblHospTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be deleted");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblHospTable.getModel();
+        for(int i=0;i<cSysMain.getHospitalDirUpdate().size();i++){
+            if(cSysMain.getHospitalDirUpdate().get(i).getHospitalId().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                cSysMain.getHospitalDirUpdate().remove(cSysMain.getHospitalDirUpdate().get(i));
+            }
+        }
+        for(int i=0;i<cSysMain.getCityList().size();i++){
+            for(int j=0;j<cSysMain.getCityList().get(i).getHospList().size();j++){
+            if(cSysMain.getCityList().get(i).getHospList().get(j).getHospitalId().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                cSysMain.getCityList().get(i).getHospList().get(j).setHospitalId(String.valueOf(cSysMain.getCityList().get(i).getHospList().size()+1));
+                cSysMain.getCityList().get(i).getHospList().get(j).setHospitalName("hospitaln");
+            }
+            }
+        }
+        for(int i=0;i<cSysMain.getCommunityMasterList().size();i++){
+            for(int j=0;j<cSysMain.getCommunityMasterList().get(i).getHosp().size();j++){
+            if(cSysMain.getCommunityMasterList().get(i).getHosp().get(j).getHospitalId().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                cSysMain.getCommunityMasterList().get(i).getHosp().get(j).setHospitalId(String.valueOf(cSysMain.getCommunityMasterList().get(i).getHosp().size()+1));
+                cSysMain.getCommunityMasterList().get(i).getHosp().get(j).setHospitalName("hospitaln");
+            }
+            }
+        }
+        populateHospTable(cSysMain);
+        populateCommTable(cSysMain);
+        populateCityTable(cSysMain);
     }//GEN-LAST:event_btnDeleteHosActionPerformed
 
     private void btnViewComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewComActionPerformed
@@ -960,6 +991,27 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void btnDeleteComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteComActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblCommunity.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be deleted");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblCommunity.getModel();
+        for(int i=0;i<cSysMain.getCommunityMasterList().size();i++){
+            if(cSysMain.getCommunityMasterList().get(i).getCommunityId().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                cSysMain.getCommunityMasterList().remove(cSysMain.getCommunityMasterList().get(i));
+            }
+        }
+        for(int i=0;i<cSysMain.getCityList().size();i++){
+            for(int j=0;j<cSysMain.getCityList().get(i).getCommList().size();j++){
+            if(cSysMain.getCityList().get(i).getCommList().get(j).getCommunityId().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                cSysMain.getCityList().get(i).getCommList().get(j).setCommunityId(String.valueOf(cSysMain.getCityList().get(i).getCommList().size()+1));
+                cSysMain.getCityList().get(i).getCommList().get(j).setCommunityName("commn");
+            }
+            }
+        }
+        populateCommTable(cSysMain);
+        populateCityTable(cSysMain);
     }//GEN-LAST:event_btnDeleteComActionPerformed
 
     private void btnViewDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDocActionPerformed
@@ -977,52 +1029,60 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void btnUpdateDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDocActionPerformed
         // TODO add your handling code here:
-//        int selectedRowIndex = tblPatients.getSelectedRow();
-//        if(selectedRowIndex < 0){
-//            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
-//            return;
-//        }
-//        DefaultTableModel model = (DefaultTableModel)tblPatients.getModel();
-////        DefaultTableModel modelDoc = (DefaultTableModel)tblDoctor.getModel();
-//        
-//        for(int i=0;i<cSysMain.getPatList().size();i++){
-//            if(cSysMain.getPatList().get(i).getPatientName().equals(model.getValueAt(selectedRowIndex, 0).toString())){
-//               if(txtPatName.getText().isEmpty()&& txtBloodGrp.getText().isEmpty() && txtVitalSign.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(this,"All fields cannot be empty");
-//           
-//        }else{
-//        if(!txtPatName.getText().isEmpty()){
-//            cSysMain.getPatList().get(i).setPatientName(txtPatName.getText());
-//            
-//        }
-//        if(!txtBloodGrp.getText().isEmpty()){           
-//
-//            cSysMain.getPatList().get(i).setBloodGroup(txtBloodGrp.getText());
-//           
-//        }
-//        if(!txtVitalSign.getText().isEmpty()){
-//            
-//            cSysMain.getPatList().get(i).getVitalSign().setVitalSign(txtVitalSign.getText());
-//            for(int j=0;j<cSysMain.getVsList().size();j++){
-//                if(!cSysMain.getVsList().get(j).getVitalSign().equals(txtVitalSign.getText())){
-//                    VitalSigns vsNew = new VitalSigns(String.valueOf(cSysMain.getVsList().size()+1), txtVitalSign.getText());
-//                    cSysMain.getVsList().add(vsNew);
-//                }
-//            }
-//        }
-//        
-//        
-//        
-//        } 
-//      }
-//        }
-//      populatePatientTable(cSysMain);
+        int selectedRowIndex = tblDoctor.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblDoctor.getModel();
+
+        
+        for(int i=0;i<cSysMain.getDoctorList().size();i++){
+            if(cSysMain.getDoctorList().get(i).getDoctorName().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+               if(txtDocName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Doctor Name cannot be empty");
+           
+        }else{
+        if(!txtDocName.getText().isEmpty()){
+            cSysMain.getDoctorList().get(i).setDoctorName(txtDocName.getText());
+            for(Hospital h:cSysMain.getHospitalDirUpdate()){
+                if(h.getDoctor().getDoctorName().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                    h.getDoctor().setDoctorName(txtDocName.getText());
+                }
+            }
+        }
+        
+        
+        
+        
+        } 
+      }
+        }
+      populateHospTable(cSysMain);
+        populateDoctorTable(cSysMain);
 //        populateVitalSignsTable(cSysMain);
         
     }//GEN-LAST:event_btnUpdateDocActionPerformed
 
     private void btnCreateDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDocActionPerformed
         // TODO add your handling code here:
+        if(txtDocName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Doctors Name");   
+        }
+        else{
+            Doctor docNew = new Doctor();
+            docNew.setDoctorName(txtDocName.getText());
+            docNew.setDoctorUserId(String.valueOf(cSysMain.getDoctorList().size()+1));
+            docNew.setDoctorPassword("abc");
+            
+            cSysMain.getDoctorList().add(docNew);
+            for(Doctor d:cSysMain.getDoctorList()){
+                
+                System.out.println(d.getDoctorName()+d.getDoctorUserId()+d.getDoctorPassword());
+            }
+            populateDoctorTable(cSysMain);
+        }
+        
     }//GEN-LAST:event_btnCreateDocActionPerformed
 
     private void btnViewPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPatActionPerformed
@@ -1117,6 +1177,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         Patient patNew = new Patient();
         patNew.setPatientName(txtPatName.getText());
         patNew.setBloodGroup(txtBloodGrp.getText());
+        patNew.setPatientUserId(String.valueOf(cSysMain.getPatList().size()+1));
+        patNew.setPatientPassword("abc");
 //        for(int j=0;j<cSysMain.getVsList().size();j++){
 //                if(!cSysMain.getVsList().get(j).getVitalSign().equals(txtVitalSign.getText())){
 //                    VitalSigns vsNew = new VitalSigns(String.valueOf(cSysMain.getVsList().size()+1), txtVitalSign.getText());
