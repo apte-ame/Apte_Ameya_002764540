@@ -16,6 +16,7 @@ import model.Hospital;
 import model.House;
 import model.MasterDB;
 import model.Patient;
+import model.VitalSigns;
 
 /**
  *
@@ -35,6 +36,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         populateDoctorTable(cSysMain);
         populatePatientTable(cSysMain);
         populateCityTable(cSysMain);
+        populateVitalSignsTable(cSysMain);
     }
     public SystemAdminDashboard() {
         initComponents();
@@ -91,16 +93,17 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         btnViewDoc = new javax.swing.JButton();
         btnUpdateDoc = new javax.swing.JButton();
         btnCreateDoc = new javax.swing.JButton();
-        btnDeleteDoc = new javax.swing.JButton();
         btnViewPat = new javax.swing.JButton();
         btnUpdatePat = new javax.swing.JButton();
         btnCreatePat = new javax.swing.JButton();
         btnDeletePat = new javax.swing.JButton();
         btnViewCity = new javax.swing.JButton();
-        btnUpdateCity = new javax.swing.JButton();
-        btnCreateCity = new javax.swing.JButton();
-        btnDeleteCity = new javax.swing.JButton();
         btnLandingPage = new java.awt.Button();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblVitalSigns = new javax.swing.JTable();
+        btnViewVitSign = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        txtVitalSignId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -321,13 +324,6 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteDoc.setText("Delete Doc");
-        btnDeleteDoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteDocActionPerformed(evt);
-            }
-        });
-
         btnViewPat.setText("View Pat");
         btnViewPat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,31 +359,38 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        btnUpdateCity.setText("Update City");
-        btnUpdateCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateCityActionPerformed(evt);
-            }
-        });
-
-        btnCreateCity.setText("Create City");
-        btnCreateCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateCityActionPerformed(evt);
-            }
-        });
-
-        btnDeleteCity.setText(" Delete City");
-        btnDeleteCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteCityActionPerformed(evt);
-            }
-        });
-
         btnLandingPage.setLabel("Home Page");
         btnLandingPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLandingPageActionPerformed(evt);
+            }
+        });
+
+        tblVitalSigns.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Vital Sign Id", "Vital Sign"
+            }
+        ));
+        jScrollPane6.setViewportView(tblVitalSigns);
+
+        btnViewVitSign.setText("View Vital Sign");
+        btnViewVitSign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewVitSignActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Vital Sign Id");
+
+        txtVitalSignId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVitalSignIdActionPerformed(evt);
             }
         });
 
@@ -396,69 +399,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel10))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtDocName, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                                    .addComponent(txtCityId))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel6)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(txtHosName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCommName)
-                            .addComponent(txtHouse)
-                            .addComponent(txtCityName)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtHosId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCommId, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtVitalSign)
-                        .addGap(71, 71, 71))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtBloodGrp)
-                        .addGap(71, 71, 71))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPatName)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnViewCity)
-                            .addComponent(btnUpdateCity)
-                            .addComponent(btnCreateCity)
-                            .addComponent(btnDeleteCity))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -483,6 +425,22 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnViewDoc)
+                                    .addComponent(btnUpdateDoc)
+                                    .addComponent(btnCreateDoc))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnUpdatePat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnCreatePat)
+                                    .addComponent(btnDeletePat)
+                                    .addComponent(btnViewPat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnViewVitSign, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(343, 343, 343))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnViewCom)
@@ -490,21 +448,70 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                                         .addComponent(btnUpdateComm)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnDeleteCom))
-                                    .addComponent(btnCreateComm)))
+                                    .addComponent(btnCreateComm))
+                                .addGap(218, 218, 218))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(168, 168, 168)
+                                .addComponent(btnViewCity))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel10))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtDocName, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                                                    .addComponent(txtCityId))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel11)
+                                                    .addComponent(jLabel6)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(txtHosName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel5)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtCommName)
+                                            .addComponent(txtHouse)
+                                            .addComponent(txtCityName)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtHosId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtCommId, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnViewDoc)
-                                    .addComponent(btnUpdateDoc)
-                                    .addComponent(btnCreateDoc)
-                                    .addComponent(btnDeleteDoc))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnUpdatePat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnCreatePat)
-                                    .addComponent(btnDeletePat)
-                                    .addComponent(btnViewPat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel12))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtVitalSignId)
+                                .addGap(49, 49, 49))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtVitalSign)
+                                .addGap(71, 71, 71))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtBloodGrp)
+                                .addGap(71, 71, 71))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPatName)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,7 +551,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnCreateDoc)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDeleteDoc))
+                            .addComponent(btnDeletePat))
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -552,21 +559,20 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addComponent(btnUpdatePat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCreatePat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(btnDeletePat)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCreatePat)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnViewCity)
-                        .addGap(5, 5, 5)
-                        .addComponent(btnUpdateCity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCreateCity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(btnDeleteCity)))
-                .addGap(28, 28, 28)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnViewVitSign)
+                                .addGap(63, 63, 63)))
+                        .addComponent(btnViewCity))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHosId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -595,8 +601,10 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(146, Short.MAX_VALUE))
+                    .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtVitalSignId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         pack();
@@ -640,6 +648,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void btnViewHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHosActionPerformed
         // TODO add your handling code here:
+        
+        clearAllTextBoxes();
         int selectedRowIndex = tblHospTable.getSelectedRow();
         if(selectedRowIndex < 0){
             JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
@@ -788,6 +798,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void btnViewComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewComActionPerformed
         // TODO add your handling code here:
+        clearAllTextBoxes();
         int selectedRowIndex = tblCommunity.getSelectedRow();
         if(selectedRowIndex < 0){
             JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
@@ -891,7 +902,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void btnCreateCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCommActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblHospTable.getSelectedRow();
+        int selectedRowIndex = tblCommunity.getSelectedRow();
         if(txtHosId.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Please enter the hospitalId");   
         }
@@ -953,57 +964,245 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void btnViewDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDocActionPerformed
         // TODO add your handling code here:
+        clearAllTextBoxes();
+       int selectedRowIndex = tblDoctor.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblDoctor.getModel();
+        txtDocName.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        
     }//GEN-LAST:event_btnViewDocActionPerformed
 
     private void btnUpdateDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDocActionPerformed
         // TODO add your handling code here:
+//        int selectedRowIndex = tblPatients.getSelectedRow();
+//        if(selectedRowIndex < 0){
+//            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
+//            return;
+//        }
+//        DefaultTableModel model = (DefaultTableModel)tblPatients.getModel();
+////        DefaultTableModel modelDoc = (DefaultTableModel)tblDoctor.getModel();
+//        
+//        for(int i=0;i<cSysMain.getPatList().size();i++){
+//            if(cSysMain.getPatList().get(i).getPatientName().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+//               if(txtPatName.getText().isEmpty()&& txtBloodGrp.getText().isEmpty() && txtVitalSign.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(this,"All fields cannot be empty");
+//           
+//        }else{
+//        if(!txtPatName.getText().isEmpty()){
+//            cSysMain.getPatList().get(i).setPatientName(txtPatName.getText());
+//            
+//        }
+//        if(!txtBloodGrp.getText().isEmpty()){           
+//
+//            cSysMain.getPatList().get(i).setBloodGroup(txtBloodGrp.getText());
+//           
+//        }
+//        if(!txtVitalSign.getText().isEmpty()){
+//            
+//            cSysMain.getPatList().get(i).getVitalSign().setVitalSign(txtVitalSign.getText());
+//            for(int j=0;j<cSysMain.getVsList().size();j++){
+//                if(!cSysMain.getVsList().get(j).getVitalSign().equals(txtVitalSign.getText())){
+//                    VitalSigns vsNew = new VitalSigns(String.valueOf(cSysMain.getVsList().size()+1), txtVitalSign.getText());
+//                    cSysMain.getVsList().add(vsNew);
+//                }
+//            }
+//        }
+//        
+//        
+//        
+//        } 
+//      }
+//        }
+//      populatePatientTable(cSysMain);
+//        populateVitalSignsTable(cSysMain);
+        
     }//GEN-LAST:event_btnUpdateDocActionPerformed
 
     private void btnCreateDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDocActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCreateDocActionPerformed
 
-    private void btnDeleteDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDocActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteDocActionPerformed
-
     private void btnViewPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPatActionPerformed
         // TODO add your handling code here:
+        clearAllTextBoxes();
+        int selectedRowIndex = tblPatients.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblPatients.getModel();
+        txtPatName.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        txtBloodGrp.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        txtVitalSign.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        
     }//GEN-LAST:event_btnViewPatActionPerformed
 
     private void btnUpdatePatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePatActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblPatients.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be updated");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblPatients.getModel();
+//        DefaultTableModel modelDoc = (DefaultTableModel)tblDoctor.getModel();
+        
+        for(int i=0;i<cSysMain.getPatList().size();i++){
+            if(cSysMain.getPatList().get(i).getPatientName().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+               if(txtPatName.getText().isEmpty()&& txtBloodGrp.getText().isEmpty() && txtVitalSign.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"All fields cannot be empty");
+           
+        }else{
+        if(!txtPatName.getText().isEmpty()){
+            cSysMain.getPatList().get(i).setPatientName(txtPatName.getText());
+            
+        }
+        if(!txtBloodGrp.getText().isEmpty()){           
+
+            cSysMain.getPatList().get(i).setBloodGroup(txtBloodGrp.getText());
+           
+        }
+        if(!txtVitalSign.getText().isEmpty()){
+            
+            cSysMain.getPatList().get(i).getVitalSign().setVitalSign(txtVitalSign.getText());
+//            for(int j=0;j<cSysMain.getVsList().size();j++){
+//                if(!cSysMain.getVsList().get(j).getVitalSign().equals(txtVitalSign.getText())){
+//                    VitalSigns vsNew = new VitalSigns(String.valueOf(cSysMain.getVsList().size()+1), txtVitalSign.getText());
+//                    cSysMain.getVsList().add(vsNew);
+//                }
+//            }
+            Boolean flag =false;
+            for(int j=0;j<cSysMain.getVsList().size();j++){
+
+                if((cSysMain.getVsList().get(j).getVitalSign().concat(cSysMain.getVsList().get(j).getVitalSignsId())).equals(txtVitalSign.getText().concat(txtVitalSignId.getText()))){
+                    flag =true;
+
+                    break;
+
+                }
+            }
+            if(!flag){
+                VitalSigns vsNew = new VitalSigns(txtVitalSignId.getText(), txtVitalSign.getText());
+                cSysMain.getVsList().add(vsNew);
+            }
+        }
+        
+        
+        
+        } 
+      }
+        }
+      populatePatientTable(cSysMain);
+        populateVitalSignsTable(cSysMain);
+        
     }//GEN-LAST:event_btnUpdatePatActionPerformed
 
     private void btnCreatePatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePatActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblPatients.getSelectedRow();
+        if(txtPatName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Patient Name");   
+        }
+        else if(txtBloodGrp.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Blood Group");   
+        }
+        else if(txtVitalSign.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Vital Sign");   
+        }
+        else{
+        DefaultTableModel model = (DefaultTableModel)tblPatients.getModel();
+        Patient patNew = new Patient();
+        patNew.setPatientName(txtPatName.getText());
+        patNew.setBloodGroup(txtBloodGrp.getText());
+//        for(int j=0;j<cSysMain.getVsList().size();j++){
+//                if(!cSysMain.getVsList().get(j).getVitalSign().equals(txtVitalSign.getText())){
+//                    VitalSigns vsNew = new VitalSigns(String.valueOf(cSysMain.getVsList().size()+1), txtVitalSign.getText());
+//                    cSysMain.getVsList().add(vsNew);
+//                    patNew.setVitalSign(vsNew);
+//                }
+//        }
+      Boolean flag =false;
+            for(int j=0;j<cSysMain.getVsList().size();j++){
+
+                if((cSysMain.getVsList().get(j).getVitalSign().concat(cSysMain.getVsList().get(j).getVitalSignsId())).equals(txtVitalSign.getText().concat(txtVitalSignId.getText()))){
+                    flag =true;
+
+                    break;
+
+                }
+            }
+            if(!flag){
+                VitalSigns vsNew = new VitalSigns(txtVitalSignId.getText(), txtVitalSign.getText());
+                cSysMain.getVsList().add(vsNew);
+                patNew.setVitalSign(vsNew);
+            }
+        cSysMain.getPatList().add(patNew);
+        populatePatientTable(cSysMain);
+            populateVitalSignsTable(cSysMain);
+        }
     }//GEN-LAST:event_btnCreatePatActionPerformed
 
     private void btnDeletePatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePatActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblPatients.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be deleted");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblPatients.getModel();
+        for(int i=0;i<cSysMain.getPatList().size();i++){
+            if(cSysMain.getPatList().get(i).getPatientName().equals(model.getValueAt(selectedRowIndex, 0).toString())&&
+                 cSysMain.getPatList().get(i).getBloodGroup().equals(model.getValueAt(selectedRowIndex, 1).toString()) &&
+                  cSysMain.getPatList().get(i).getVitalSign().getVitalSign().equals(model.getValueAt(selectedRowIndex, 2).toString()) ){
+                cSysMain.getPatList().remove(cSysMain.getPatList().get(i));
+                JOptionPane.showMessageDialog(this, "Record deleted successfully");
+            }
+        }
+        populatePatientTable(cSysMain);
+        populateVitalSignsTable(cSysMain);
     }//GEN-LAST:event_btnDeletePatActionPerformed
 
     private void btnViewCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCityActionPerformed
         // TODO add your handling code here:
+        clearAllTextBoxes();
+        int selectedRowIndex = tblCity.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblCity.getModel();
+        txtCityId.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        txtCityName.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        txtCommName.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        txtHosName.setText(model.getValueAt(selectedRowIndex, 3).toString());
     }//GEN-LAST:event_btnViewCityActionPerformed
-
-    private void btnUpdateCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateCityActionPerformed
-
-    private void btnCreateCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCreateCityActionPerformed
-
-    private void btnDeleteCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteCityActionPerformed
 
     private void btnLandingPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingPageActionPerformed
         // TODO add your handling code here:
         new MainSelectionPage(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLandingPageActionPerformed
+
+    private void btnViewVitSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewVitSignActionPerformed
+        // TODO add your handling code here:
+        clearAllTextBoxes();
+        int selectedRowIndex = tblVitalSigns.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblVitalSigns.getModel();
+        txtVitalSignId.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        txtVitalSign.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        
+    }//GEN-LAST:event_btnViewVitSignActionPerformed
+
+    private void txtVitalSignIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVitalSignIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVitalSignIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1041,18 +1240,14 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCreateCity;
     private javax.swing.JButton btnCreateComm;
     private javax.swing.JButton btnCreateDoc;
     private javax.swing.JButton btnCreateHos;
     private javax.swing.JButton btnCreatePat;
-    private javax.swing.JButton btnDeleteCity;
     private javax.swing.JButton btnDeleteCom;
-    private javax.swing.JButton btnDeleteDoc;
     private javax.swing.JButton btnDeleteHos;
     private javax.swing.JButton btnDeletePat;
     private java.awt.Button btnLandingPage;
-    private javax.swing.JButton btnUpdateCity;
     private javax.swing.JButton btnUpdateComm;
     private javax.swing.JButton btnUpdateDoc;
     private javax.swing.JButton btnUpdateHos;
@@ -1062,9 +1257,11 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnViewDoc;
     private javax.swing.JButton btnViewHos;
     private javax.swing.JButton btnViewPat;
+    private javax.swing.JButton btnViewVitSign;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1078,11 +1275,13 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable tblCity;
     private javax.swing.JTable tblCommunity;
     private javax.swing.JTable tblDoctor;
     private javax.swing.JTable tblHospTable;
     private javax.swing.JTable tblPatients;
+    private javax.swing.JTable tblVitalSigns;
     private javax.swing.JTextField txtBloodGrp;
     private javax.swing.JTextField txtCityId;
     private javax.swing.JTextField txtCityName;
@@ -1094,6 +1293,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField txtHouse;
     private javax.swing.JTextField txtPatName;
     private javax.swing.JTextField txtVitalSign;
+    private javax.swing.JTextField txtVitalSignId;
     // End of variables declaration//GEN-END:variables
     
     private void populateHospTable(ConfigureSystem cSysMain) {
@@ -1149,6 +1349,20 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
         }
     }
     
+     private void populateVitalSignsTable(ConfigureSystem cSysMain) {
+        DefaultTableModel model = (DefaultTableModel)tblVitalSigns.getModel();
+        model.setRowCount(0);
+
+        for(VitalSigns myRow:cSysMain.getVsList()){
+            Object[] row = new Object[4];
+            row[0] = myRow.getVitalSignsId();
+            row[1] = myRow.getVitalSign();
+            
+        
+            model.addRow(row);
+        }
+    }
+    
         private void populateCityTable(ConfigureSystem cSysMain) {
         DefaultTableModel model = (DefaultTableModel)tblCity.getModel();
         model.setRowCount(0);
@@ -1161,5 +1375,19 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             row[3] = myRow.getHospList().get(0).getHospitalName();
             model.addRow(row);
         }
+    }
+        private void clearAllTextBoxes(){
+        txtVitalSignId.setText("");
+        txtBloodGrp.setText("");
+        txtCityId.setText("");
+        txtCityName.setText("");
+        txtCommId.setText("");
+        txtCommName.setText("");
+        txtDocName.setText("");
+        txtHosId.setText("");
+        txtHosName.setText("");
+        txtHouse.setText("");
+        txtPatName.setText("");
+        txtVitalSign.setText("");
     }
 }

@@ -43,7 +43,16 @@ public class ConfigureSystem {
     VitalSigns vs1,vs2,vs3;
     Encounter ench1,ench2;
     City cy1,cy2,cy3,cy4;
+    ArrayList<VitalSigns> vsList;
 
+    public ArrayList<VitalSigns> getVsList() {
+        return vsList;
+    }
+
+    public void setVsList(ArrayList<VitalSigns> vsList) {
+        this.vsList = vsList;
+    }
+    
     public ArrayList<ArrayList<Community>> getMasterCommunityListy() {
         return masterCommunityListy;
     }
@@ -892,7 +901,10 @@ public class ConfigureSystem {
         masterCommunityListy.add(communityList3);
         masterCommunityListy.add(communityList4);
         
-        
+        vsList = new ArrayList<>();
+        vsList.add(vs1);
+        vsList.add(vs2);
+        vsList.add(vs3);
         
       
     }

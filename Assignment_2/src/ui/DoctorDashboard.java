@@ -4,10 +4,12 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ConfigureSystem;
 import model.Encounter;
 import model.MasterDB;
+import model.VitalSigns;
 
 /**
  *
@@ -24,7 +26,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
         this.cSysMain = cSysMain;
         populatePastApptTable(this.cSysMain);
         populateCurrentApptTable(this.cSysMain);
-        
+        populateVitalSignsTable(cSysMain);
         
     }
     
@@ -48,6 +50,14 @@ public class DoctorDashboard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnLandingPage = new java.awt.Button();
         btnBookApp = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblVitalSigns = new javax.swing.JTable();
+        btnViewVitSign = new javax.swing.JButton();
+        btnCreateVitSign = new javax.swing.JButton();
+        txtVitalSign = new javax.swing.JTextField();
+        txtVitalSignId = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,31 +105,95 @@ public class DoctorDashboard extends javax.swing.JFrame {
             }
         });
 
+        tblVitalSigns.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Vital Sign Id", "Vital Sign"
+            }
+        ));
+        jScrollPane6.setViewportView(tblVitalSigns);
+
+        btnViewVitSign.setText("View Vital Sign");
+        btnViewVitSign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewVitSignActionPerformed(evt);
+            }
+        });
+
+        btnCreateVitSign.setText("Create VitalSign");
+        btnCreateVitSign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateVitSignActionPerformed(evt);
+            }
+        });
+
+        txtVitalSign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVitalSignActionPerformed(evt);
+            }
+        });
+
+        txtVitalSignId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVitalSignIdActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Vital Sign Id");
+
+        jLabel9.setText("Vital Sign");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(jLabel1)
-                        .addGap(196, 196, 196)
-                        .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(jLabel2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(320, 320, 320)
+                                .addComponent(jLabel1)
+                                .addGap(196, 196, 196)
+                                .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(315, 315, 315)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(255, 255, 255)
+                                .addComponent(btnBookApp, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 348, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(btnBookApp, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnViewVitSign, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(3, 3, 3))
+                                    .addComponent(btnCreateVitSign)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel12))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtVitalSignId)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtVitalSign)
+                                        .addGap(22, 22, 22)))))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,12 +202,34 @@ public class DoctorDashboard extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnViewVitSign)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnCreateVitSign)
+                                .addGap(27, 27, 27))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtVitalSign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtVitalSignId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBookApp)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -178,6 +274,56 @@ public class DoctorDashboard extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnBookAppActionPerformed
 
+    private void btnViewVitSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewVitSignActionPerformed
+        // TODO add your handling code here:
+        clearAllTextBoxes();
+        int selectedRowIndex = tblVitalSigns.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblVitalSigns.getModel();
+        txtVitalSignId.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        txtVitalSign.setText(model.getValueAt(selectedRowIndex, 1).toString());
+
+    }//GEN-LAST:event_btnViewVitSignActionPerformed
+
+    private void btnCreateVitSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateVitSignActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblVitalSigns.getSelectedRow();
+        if(txtVitalSign.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Vital Sign");
+        }
+        if(txtVitalSignId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter the Vital Sign Id");
+        }
+        else{
+            Boolean flag =false;
+            for(int j=0;j<cSysMain.getVsList().size();j++){
+
+                if((cSysMain.getVsList().get(j).getVitalSign().concat(cSysMain.getVsList().get(j).getVitalSignsId())).equals(txtVitalSign.getText().concat(txtVitalSignId.getText()))){
+                    flag =true;
+
+                    break;
+
+                }
+            }
+            if(!flag){
+                VitalSigns vsNew = new VitalSigns(txtVitalSignId.getText(), txtVitalSign.getText());
+                cSysMain.getVsList().add(vsNew);
+            }
+            populateVitalSignsTable(cSysMain);
+        }
+    }//GEN-LAST:event_btnCreateVitSignActionPerformed
+
+    private void txtVitalSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVitalSignActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVitalSignActionPerformed
+
+    private void txtVitalSignIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVitalSignIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVitalSignIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,13 +361,21 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBookApp;
+    private javax.swing.JButton btnCreateVitSign;
     private java.awt.Button btnLandingPage;
+    private javax.swing.JButton btnViewVitSign;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable tblCurrAppt;
     private javax.swing.JTable tblPastAppt;
+    private javax.swing.JTable tblVitalSigns;
+    private javax.swing.JTextField txtVitalSign;
+    private javax.swing.JTextField txtVitalSignId;
     // End of variables declaration//GEN-END:variables
 
     private void populatePastApptTable(ConfigureSystem cSysMain) {
@@ -251,7 +405,25 @@ public class DoctorDashboard extends javax.swing.JFrame {
             model.addRow(row);
         }
     }
+    
+        private void clearAllTextBoxes(){
+        txtVitalSignId.setText("");
+        
+        txtVitalSign.setText("");
+    }
+    
+    private void populateVitalSignsTable(ConfigureSystem cSysMain) {
+        DefaultTableModel model = (DefaultTableModel)tblVitalSigns.getModel();
+        model.setRowCount(0);
 
-
+        for(VitalSigns myRow:cSysMain.getVsList()){
+            Object[] row = new Object[4];
+            row[0] = myRow.getVitalSignsId();
+            row[1] = myRow.getVitalSign();
+            
+        
+            model.addRow(row);
+        }
+    }
 }
 
