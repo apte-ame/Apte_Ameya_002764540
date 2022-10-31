@@ -421,7 +421,7 @@ public class PatientAppointmentBooking extends javax.swing.JFrame {
                 this.cSysMain.getEncList().add(enc);
             }
         }
-        
+        JOptionPane.showMessageDialog(this, "Appointment booked successfully for time: " + now.toString());
 
         
         

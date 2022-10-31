@@ -24,6 +24,7 @@ public class PatientLogin extends javax.swing.JFrame {
     
     public PatientLogin(){
         initComponents();
+        
     }
 
     /**
@@ -166,7 +167,7 @@ public class PatientLogin extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-        new PatientSignUp().setVisible(true);
+        new PatientSignUp(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSignUpActionPerformed
 

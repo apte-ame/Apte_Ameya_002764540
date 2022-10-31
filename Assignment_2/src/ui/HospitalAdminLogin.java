@@ -39,7 +39,6 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
         lblUserName = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
-        btnSignUp = new javax.swing.JButton();
         btnSignIn = new javax.swing.JButton();
         jPassField = new javax.swing.JPasswordField();
         btnLandingPage = new java.awt.Button();
@@ -58,13 +57,6 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
         });
 
         lblPassword.setText("Password");
-
-        btnSignUp.setText("Sign Up");
-        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignUpActionPerformed(evt);
-            }
-        });
 
         btnSignIn.setText("Sign In");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -102,9 +94,7 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
                             .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                             .addComponent(jPassField)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(btnSignUp)
-                        .addGap(37, 37, 37)
+                        .addGap(278, 278, 278)
                         .addComponent(btnSignIn)))
                 .addContainerGap(326, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -130,9 +120,7 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
                     .addComponent(lblPassword)
                     .addComponent(jPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSignUp)
-                    .addComponent(btnSignIn))
+                .addComponent(btnSignIn)
                 .addGap(80, 80, 80))
         );
 
@@ -156,12 +144,6 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Incorrect Credentials");
         }
     }//GEN-LAST:event_btnSignInActionPerformed
-
-    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-        // TODO add your handling code here:
-        new PatientSignUp().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void jPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassFieldActionPerformed
         // TODO add your handling code here:
@@ -218,7 +200,6 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btnLandingPage;
     private javax.swing.JButton btnSignIn;
-    private javax.swing.JButton btnSignUp;
     private javax.swing.JPasswordField jPassField;
     private javax.swing.JLabel lblLogPage;
     private javax.swing.JLabel lblPassword;
