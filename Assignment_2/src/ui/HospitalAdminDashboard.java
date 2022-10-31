@@ -41,7 +41,6 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
         btnViewHos = new javax.swing.JButton();
         btnUpdateHos = new javax.swing.JButton();
         btnCreateHos = new javax.swing.JButton();
-        btnDeleteHos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtHosId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -59,6 +58,7 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtCityName = new javax.swing.JTextField();
         btnLandingPage = new java.awt.Button();
+        btnDeleteHos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +69,7 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Hospital Id", "Hospital Name", "Doctor Name"
+                "HOSPITAL ID", "HOSPITAL NAME", "DOCTOR NAME"
             }
         ));
         jScrollPane1.setViewportView(tblHospTable);
@@ -92,13 +92,6 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
         btnCreateHos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateHosActionPerformed(evt);
-            }
-        });
-
-        btnDeleteHos.setText("Delete Hos");
-        btnDeleteHos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteHosActionPerformed(evt);
             }
         });
 
@@ -154,10 +147,19 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        btnLandingPage.setLabel("Home Page");
+        btnLandingPage.setBackground(new java.awt.Color(255, 255, 204));
+        btnLandingPage.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnLandingPage.setLabel("HOME PAGE");
         btnLandingPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLandingPageActionPerformed(evt);
+            }
+        });
+
+        btnDeleteHos.setText("Delete Hosp");
+        btnDeleteHos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteHosActionPerformed(evt);
             }
         });
 
@@ -171,64 +173,53 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(btnViewHos)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnCreateHos)
-                                .addGap(34, 34, 34)
-                                .addComponent(btnDeleteHos)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnUpdateHos))
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel10)))
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnViewHos))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGap(266, 266, 266)
+                                        .addComponent(btnUpdateHos))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(62, 62, 62)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel2)
-                                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(jLabel3)
-                                                .addGap(11, 11, 11)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtHosId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnCreateHos)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnDeleteHos, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(22, 22, 22))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtDocName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtHosName, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(63, 63, 63)
-                                        .addComponent(jLabel10)))
-                                .addGap(104, 104, 104)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(txtHosName, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                                        .addComponent(txtHosId, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                                        .addComponent(txtDocName))
+                                                    .addComponent(txtCityId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(38, 38, 38)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel11)
-                                                    .addComponent(jLabel6)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(4, 4, 4)
-                                                .addComponent(jLabel5)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jLabel5)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(41, 41, 41)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtCommName)
-                                            .addComponent(txtHouse)
-                                            .addComponent(txtCityName, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtCommId, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(txtHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtCommName, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtCommId, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtCityName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(95, 95, 95)))))
+                        .addGap(0, 72, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -241,7 +232,7 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnLandingPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnViewHos)
@@ -417,10 +408,6 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCreateHosActionPerformed
 
-    private void btnDeleteHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteHosActionPerformed
-
     private void txtHosNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHosNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHosNameActionPerformed
@@ -450,6 +437,40 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
         new MainSelectionPage(cSysMain).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLandingPageActionPerformed
+
+    private void btnDeleteHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHosActionPerformed
+        // TODO add your handling code here:
+
+        int selectedRowIndex = tblHospTable.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to be deleted");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel)tblHospTable.getModel();
+        for(int i=0;i<cSysMain.getHospitalDirUpdate().size();i++){
+            if(cSysMain.getHospitalDirUpdate().get(i).getHospitalId().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                cSysMain.getHospitalDirUpdate().remove(cSysMain.getHospitalDirUpdate().get(i));
+            }
+        }
+        for(int i=0;i<cSysMain.getCityList().size();i++){
+            for(int j=0;j<cSysMain.getCityList().get(i).getHospList().size();j++){
+                if(cSysMain.getCityList().get(i).getHospList().get(j).getHospitalId().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                    cSysMain.getCityList().get(i).getHospList().get(j).setHospitalId(String.valueOf(cSysMain.getCityList().get(i).getHospList().size()+1));
+                    cSysMain.getCityList().get(i).getHospList().get(j).setHospitalName("hospitaln");
+                }
+            }
+        }
+        for(int i=0;i<cSysMain.getCommunityMasterList().size();i++){
+            for(int j=0;j<cSysMain.getCommunityMasterList().get(i).getHosp().size();j++){
+                if(cSysMain.getCommunityMasterList().get(i).getHosp().get(j).getHospitalId().equals(model.getValueAt(selectedRowIndex, 0).toString())){
+                    cSysMain.getCommunityMasterList().get(i).getHosp().get(j).setHospitalId(String.valueOf(cSysMain.getCommunityMasterList().get(i).getHosp().size()+1));
+                    cSysMain.getCommunityMasterList().get(i).getHosp().get(j).setHospitalName("hospitaln");
+                }
+            }
+        }
+        populateHospTable(cSysMain);
+   
+    }//GEN-LAST:event_btnDeleteHosActionPerformed
 
     /**
      * @param args the command line arguments

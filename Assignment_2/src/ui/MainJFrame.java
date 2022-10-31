@@ -35,8 +35,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnAdminLogin.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        btnAdminLogin.setText("Home Screen");
+        btnAdminLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAdminLogin.setText("HOME SCREEN");
         btnAdminLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminLoginActionPerformed(evt);
@@ -56,8 +56,8 @@ public class MainJFrame extends javax.swing.JFrame {
             panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLeftLayout.createSequentialGroup()
                 .addGap(112, 112, 112)
-                .addComponent(btnAdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addComponent(btnAdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(panelLeft);
