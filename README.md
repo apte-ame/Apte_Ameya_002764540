@@ -1,6 +1,8 @@
 # Apte_Ameya_002764540
 
-## Assignment 2 - below are the required class diagram and sequence diagram
+## Assignment 2 
+
+### Below are the required class diagram and sequence diagram
 
 ![alt text](https://github.com/apte-ame/Apte_Ameya_002764540/blob/main/ClassDiagram.png?raw=true)
 
