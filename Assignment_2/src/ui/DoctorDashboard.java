@@ -302,7 +302,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
 
                 if((cSysMain.getVsList().get(j).getVitalSign().concat(cSysMain.getVsList().get(j).getVitalSignsId())).equals(txtVitalSign.getText().concat(txtVitalSignId.getText()))){
                     flag =true;
-
+                    
                     break;
 
                 }
@@ -310,8 +310,11 @@ public class DoctorDashboard extends javax.swing.JFrame {
             if(!flag){
                 VitalSigns vsNew = new VitalSigns(txtVitalSignId.getText(), txtVitalSign.getText());
                 cSysMain.getVsList().add(vsNew);
+                JOptionPane.showMessageDialog(this, "Record created successfully");
             }
             populateVitalSignsTable(cSysMain);
+
+            clearAllTextBoxes();
         }
     }//GEN-LAST:event_btnCreateVitSignActionPerformed
 

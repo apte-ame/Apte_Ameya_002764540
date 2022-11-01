@@ -264,6 +264,7 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
 
     private void btnViewComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewComActionPerformed
         // TODO add your handling code here:
+        clearAllTextBoxes();
         int selectedRowIndex = tblCommunity.getSelectedRow();
         if(selectedRowIndex < 0){
             JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
@@ -355,7 +356,7 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
                 }
             }
         }
-       
+        clearAllTextBoxes();
         populateCommTable(cSysMain);
 
 
@@ -411,7 +412,8 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
             MasterDB masterNew = new MasterDB(cityNew, hosNew, docNew, commNew);
             cSysMain.getMasterList().add(masterNew);
 
-
+            
+        clearAllTextBoxes();
             populateCommTable(cSysMain);
         }
     }//GEN-LAST:event_btnCreateCommActionPerformed
@@ -468,7 +470,8 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
             }
         }
         populateCommTable(cSysMain);
-    
+        
+        clearAllTextBoxes();
     }//GEN-LAST:event_btnDeleteComActionPerformed
 
     /**
@@ -543,6 +546,19 @@ public class CommunityAdminDashboard extends javax.swing.JFrame {
             row[3] = myRow.getHosp().get(0).getHospitalName();
             model.addRow(row);
         }
+    }
+    
+     private void clearAllTextBoxes(){
+       
+        txtCityId.setText("");
+        txtCityName.setText("");
+        txtCommId.setText("");
+        txtCommName.setText("");
+        txtDocName.setText("");
+        txtHosId.setText("");
+        txtHosName.setText("");
+        txtHouse.setText("");
+        
     }
 
 }

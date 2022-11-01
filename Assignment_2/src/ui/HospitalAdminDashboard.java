@@ -271,6 +271,7 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
 
     private void btnViewHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHosActionPerformed
         // TODO add your handling code here:
+        clearAllTextBoxes();
         int selectedRowIndex = tblHospTable.getSelectedRow();
         if(selectedRowIndex < 0){
             JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
@@ -349,7 +350,8 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
             }
         }
         populateHospTable(cSysMain);
-        
+        JOptionPane.showMessageDialog(this, "Record updated successfully");
+        clearAllTextBoxes();
     }//GEN-LAST:event_btnUpdateHosActionPerformed
 
     private void btnCreateHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHosActionPerformed
@@ -404,7 +406,8 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
             cSysMain.getMasterList().add(masterNew);
 
             populateHospTable(cSysMain);
-            
+            JOptionPane.showMessageDialog(this, "Record created successfully");
+            clearAllTextBoxes();
         }
     }//GEN-LAST:event_btnCreateHosActionPerformed
 
@@ -469,7 +472,8 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
             }
         }
         populateHospTable(cSysMain);
-   
+        JOptionPane.showMessageDialog(this, "Record deleted successfully");
+        clearAllTextBoxes();
     }//GEN-LAST:event_btnDeleteHosActionPerformed
 
     /**
@@ -544,5 +548,17 @@ public class HospitalAdminDashboard extends javax.swing.JFrame {
             row[2] = myRow.getDoctor().getDoctorName();
             model.addRow(row);
         }
+    }
+        private void clearAllTextBoxes(){
+       
+        txtCityId.setText("");
+        txtCityName.setText("");
+        txtCommId.setText("");
+        txtCommName.setText("");
+        txtDocName.setText("");
+        txtHosId.setText("");
+        txtHosName.setText("");
+        txtHouse.setText("");
+       
     }
 }
