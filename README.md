@@ -2,11 +2,9 @@
 
 ## Assignment 2 - below are the required class diagram and sequence diagram
 
-![alt text](https://github.com/apte-ame/
-Apte_Ameya_002764540/blob/main/ClassDiagram.png?raw=true)
+![alt text](https://github.com/apte-ame/Apte_Ameya_002764540/blob/main/ClassDiagram.png?raw=true)
 
-![alt text](https://github.com/apte-ame/
-Apte_Ameya_002764540/blob/main/SequenceDiagram.png?raw=true)
+![alt text](https://github.com/apte-ame/Apte_Ameya_002764540/blob/main/SequenceDiagram.png?raw=true)
 
 ### The project is all about performing the below steps:
 
